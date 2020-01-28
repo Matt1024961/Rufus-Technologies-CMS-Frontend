@@ -11,14 +11,14 @@ describe('BreadcrumbComponent', () => {
   let fixture: ComponentFixture<BreadcrumbComponent>;
 
   const initialState = {
-    'router': {
-      'state': {
-        'title': 'UNKNOWN',
-        'url': '/',
-        'params': {},
-        'queryParams': {},
+    router: {
+      state: {
+        title: 'UNKNOWN',
+        url: '/',
+        params: {},
+        queryParams: {},
       },
-      'navigationId': 1
+      navigationId: 1
     }
   };
 

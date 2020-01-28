@@ -9,11 +9,11 @@ describe('ThemeComponent', () => {
   let fixture: ComponentFixture<ThemeComponent>;
 
   const initialState = {
-    'user': {
+    user: {
       'user-config': {
         'theme-name': 'indigo-pink',
         'theme-href': 'assets/themes/indigo-pink.css',
-        'font': 1
+        font: 1
       }
     }
   };
@@ -33,7 +33,6 @@ describe('ThemeComponent', () => {
     fixture = TestBed.createComponent(ThemeComponent);
     component = fixture.debugElement.componentInstance;
     fixture.detectChanges();
-    
   }));
 
   it('should create', () => {

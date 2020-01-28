@@ -9,6 +9,7 @@
     "build:stats": "ng build --prod --stats-json",
     "build:stats:analyze": "ng build --prod --stats-json && npm run analyze",
     "test": "ng test",
+    "test:nowatch": "ng test --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -63,6 +64,6 @@
   },
   "pre-commit": [
     "lint",
-    "test"
+    "test:nowatch"
   ]
 }
