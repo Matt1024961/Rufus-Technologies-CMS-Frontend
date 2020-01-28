@@ -1,53 +1,44 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { By } from '@angular/platform-browser';
-
-import { Store, MemoizedSelector } from '@ngrx/store';
-import { provideMockStore, MockStore } from '@ngrx/store/testing';
-import { ModuleInterface } from '@modules/user/state/interface';
-import { UPDATE } from '@modules/user/state/user-config/actions';
-
-import { reducer } from '@modules/user/state/user-config';
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { ThemeComponent } from './theme.component';
+import { UiModule } from '@modules/ui/ui.module';
 
 describe('ThemeComponent', () => {
-  // let component: ThemeComponent;
-  // let fixture: ComponentFixture<ThemeComponent>;
-  // let mockStore: MockStore<ModuleInterface>;
-  // let mockSelector: MemoizedSelector<ModuleInterface, object>;
-  // const queryDivText = () =>
-  //   fixture.debugElement.queryAll(By.css('div'))[0].nativeElement.textContent;
+  let component: ThemeComponent;
+  let fixture: ComponentFixture<ThemeComponent>;
 
-  // beforeEach(async(() => {
-  //   TestBed.configureTestingModule({
-  //     providers: [provideMockStore()],
-  //     declarations: [ThemeComponent],
-  //     schemas: [CUSTOM_ELEMENTS_SCHEMA]
+  const initialState = {
+    'user': {
+      'user-config': {
+        'theme-name': 'indigo-pink',
+        'theme-href': 'assets/themes/indigo-pink.css',
+        'font': 1
+      }
+    }
+  };
 
-  //   });
+  beforeEach(async(() => {
 
-  //   fixture = TestBed.createComponent(ThemeComponent);
-  //   mockStore = TestBed.get(Store);
-  //   console.log(mockStore);
+    TestBed.configureTestingModule({
+      declarations: [ThemeComponent],
+      imports: [
+        UiModule,
+      ],
+      providers: [
+        provideMockStore({ initialState })
+      ],
+    }).compileComponents();
 
-  //   mockSelector = mockStore.overrideSelector(reducer, UPDATE);
-  //   fixture.detectChanges();
+    fixture = TestBed.createComponent(ThemeComponent);
+    component = fixture.debugElement.componentInstance;
+    fixture.detectChanges();
+    
+  }));
 
-  //   it('should greet John when the username is John', () => {
-  //     expect(queryDivText()).toBe('Greetings, John!');
-  //   });
-
-  // }));
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 
 
-  // beforeEach(() => {
-  //   fixture = TestBed.createComponent(ThemeComponent);
-  //   component = fixture.componentInstance;
-  //   fixture.detectChanges();
-  // });
-
-  // it('should create', () => {
-  //   expect(component).toBeTruthy();
-  // });
 });

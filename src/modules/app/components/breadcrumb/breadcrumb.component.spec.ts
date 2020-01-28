@@ -1,27 +1,46 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { RouterTestingModule } from '@angular/router/testing';
+
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { BreadcrumbComponent } from './breadcrumb.component';
+import { UiModule } from '@modules/ui/ui.module';
 
 describe('BreadcrumbComponent', () => {
-  // let component: BreadcrumbComponent;
-  // let fixture: ComponentFixture<BreadcrumbComponent>;
+  let component: BreadcrumbComponent;
+  let fixture: ComponentFixture<BreadcrumbComponent>;
 
-  // beforeEach(async(() => {
-  //   TestBed.configureTestingModule({
-  //     declarations: [BreadcrumbComponent],
-  //     schemas: [CUSTOM_ELEMENTS_SCHEMA]
-  //   })
-  //     .compileComponents();
-  // }));
+  const initialState = {
+    'router': {
+      'state': {
+        'title': 'UNKNOWN',
+        'url': '/',
+        'params': {},
+        'queryParams': {},
+      },
+      'navigationId': 1
+    }
+  };
 
-  // beforeEach(() => {
-  //   fixture = TestBed.createComponent(BreadcrumbComponent);
-  //   component = fixture.componentInstance;
-  //   fixture.detectChanges();
-  // });
+  beforeEach(async(() => {
 
-  // it('should create', () => {
-  //   //expect(component).toBeTruthy();
-  // });
+    TestBed.configureTestingModule({
+      declarations: [BreadcrumbComponent],
+      imports: [
+        RouterTestingModule,
+        UiModule,
+      ],
+      providers: [
+        provideMockStore({ initialState })
+      ]
+    }).compileComponents();
+
+    fixture = TestBed.createComponent(BreadcrumbComponent);
+    component = fixture.debugElement.componentInstance;
+    fixture.detectChanges();
+  }));
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
 });
