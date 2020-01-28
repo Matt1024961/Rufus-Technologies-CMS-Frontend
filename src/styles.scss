@@ -1,1 +1,626 @@
 /* You can add global styles to this file, and also import other style files */
+$material-icons-font-path: '~material-icons/iconfont/';
+@import '~material-icons/iconfont/material-icons.scss';
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+
+// $font-20px: 20px; // 5
+// $font-24px: 24px; // 6
+// $font-12px: 12px; // 3
+// $font-9px: 9px; // 2.25
+// $font-16px: 16px; // 4
+// $font-14px: 14px; // 3.5
+// $font-15px: 15px; // 3.75
+
+// $font-1162px: 11.62px; // 2.905
+// $font-938px: 9.38px; // 234.5
+// $font-112px: 112px; // 28
+// $font-56px: 56px; // 14
+// $font-45px: 45px; // 11.25
+// $font-34px: 34px; // 8.5
+// $font-18px: 18px; // 4.5
+// $font-13px: 13px; // 3.25
+// $font-11px: 11px; // 2.75
+// $font-10px: 10px; // 2.5
+
+// below are the 3 different font-theme options
+.theme-font-small>* {
+  // we decrease font-size by 25%
+  $font-20px: 15px; // 5
+  $font-24px: 18px; // 6
+  $font-12px: 9px; // 3
+  $font-9px: 6.75px; // 2.25
+  $font-16px: 12px; // 4
+  $font-14px: 11.5px; // 3.5
+  $font-15px: 11.25px; // 3.75
+  $font-1162px: 8.715; // 2.905
+  $font-938px: 7.035px; // 2.345
+  $font-112px: 84px; // 28
+  $font-56px: 42px; // 14
+  $font-45px: 33.75px; // 11.25
+  $font-34px: 25.5px; // 8.5
+  $font-18px: 13.5px; // 4.5
+  $font-13px: 9.75px; // 3.25
+  $font-11px: 8.25px; // 2.75
+  $font-10px: 7.5px; // 2.5
+
+  .mat-badge-small .mat-badge-content {
+    font-size: $font-9px;
+  }
+
+  .mat-badge-large .mat-badge-content {
+    font-size: $font-24px;
+  }
+
+  .mat-h1,
+  .mat-headline,
+  .mat-typography h1 {
+    font-size: $font-24px;
+  }
+
+  .mat-h2,
+  .mat-title,
+  .mat-typography h2 {
+    font-size: $font-20px;
+  }
+
+  .mat-h3,
+  .mat-subheading-2,
+  .mat-typography h3 {
+    font-size: $font-16px;
+  }
+
+  .mat-h4,
+  .mat-subheading-1,
+  .mat-typography h4 {
+    font-size: $font-15px;
+  }
+
+  .mat-h5,
+  .mat-typography h5 {
+    font-size: $font-1162px;
+  }
+
+  .mat-h6,
+  .mat-typography h6 {
+    font-size: $font-938px;
+  }
+
+  .mat-body-2,
+  .mat-body-strong {
+    font-size: $font-14px;
+  }
+
+  .mat-body,
+  .mat-body-1,
+  .mat-typography {
+    font-size: $font-14px;
+  }
+
+  .mat-caption,
+  .mat-small {
+    font-size: $font-12px;
+  }
+
+  .mat-display-4,
+  .mat-typography .mat-display-4 {
+    font-size: $font-112px;
+  }
+
+  .mat-display-3,
+  .mat-typography .mat-display-3 {
+    font-size: $font-56px;
+  }
+
+  .mat-display-2,
+  .mat-typography .mat-display-2 {
+    font-size: $font-45px;
+  }
+
+  .mat-display-1,
+  .mat-typography .mat-display-1 {
+    font-size: $font-34px;
+  }
+
+  .mat-bottom-sheet-container {
+    font-size: $font-14px;
+  }
+
+  .mat-button,
+  .mat-fab,
+  .mat-flat-button,
+  .mat-icon-button,
+  .mat-mini-fab,
+  .mat-raised-button,
+  .mat-stroked-button {
+    font-size: $font-14px;
+    ;
+  }
+
+  .mat-card-title {
+    font-size: $font-24px;
+  }
+
+  .mat-card-header .mat-card-title {
+    font-size: $font-20px;
+  }
+
+  .mat-card-content,
+  .mat-card-subtitle {
+    font-size: $font-14px;
+  }
+
+  .mat-checkbox-layout .mat-checkbox-label {
+    line-height: $font-24px;
+  }
+
+  .mat-chip {
+    font-size: $font-14px;
+    ;
+  }
+
+  .mat-chip .mat-chip-remove.mat-icon,
+  .mat-chip .mat-chip-trailing-icon.mat-icon {
+    font-size: $font-18px;
+  }
+
+  .mat-header-cell {
+    font-size: $font-12px;
+  }
+
+  .mat-cell,
+  .mat-footer-cell {
+    font-size: $font-14px;
+  }
+
+  .mat-calendar-body {
+    font-size: $font-13px;
+  }
+
+  .mat-calendar-body-label,
+  .mat-calendar-period-button {
+    font-size: $font-14px;
+    ;
+  }
+
+  .mat-calendar-table-header th {
+    font-size: $font-11px;
+    ;
+  }
+
+  .mat-dialog-title {
+    font-size: $font-20px;
+  }
+
+  .mat-expansion-panel-header {
+    font-size: $font-15px;
+  }
+
+  .mat-expansion-panel-content {
+    font-size: $font-14px;
+  }
+
+  .mat-grid-tile-footer,
+  .mat-grid-tile-header {
+    font-size: $font-14px;
+  }
+
+  .mat-grid-tile-footer .mat-line:nth-child(n+2),
+  .mat-grid-tile-header .mat-line:nth-child(n+2) {
+    font-size: $font-12px;
+  }
+
+  .mat-menu-item {
+    font-size: $font-14px;
+  }
+
+  .mat-paginator,
+  .mat-paginator-page-size .mat-select-trigger {
+    font-size: $font-12px;
+  }
+
+  .mat-slider-thumb-label-text {
+    font-size: $font-12px;
+  }
+
+  .mat-step-label {
+    font-size: $font-14px;
+  }
+
+  .mat-step-label-error {
+    font-size: $font-14px;
+  }
+
+  .mat-step-label-selected {
+    font-size: $font-14px;
+  }
+
+  .mat-tab-label,
+  .mat-tab-link {
+    font-size: $font-14px;
+    ;
+  }
+
+  .mat-toolbar,
+  .mat-toolbar h1,
+  .mat-toolbar h2,
+  .mat-toolbar h3,
+  .mat-toolbar h4,
+  .mat-toolbar h5,
+  .mat-toolbar h6 {
+    font-size: $font-20px;
+  }
+
+  .mat-tooltip {
+    font-size: $font-10px;
+  }
+
+  .mat-tooltip-handset {
+    font-size: $font-14px;
+  }
+
+  .mat-list-base .mat-list-item {
+    font-size: $font-16px;
+  }
+
+  .mat-list-base .mat-list-item .mat-line:nth-child(n+2) {
+    font-size: $font-14px;
+  }
+
+  .mat-list-base .mat-list-option {
+    font-size: $font-16px;
+  }
+
+  .mat-list-base .mat-list-option .mat-line:nth-child(n+2) {
+    font-size: $font-14px;
+  }
+
+  .mat-list-base .mat-subheader {
+    font-size: $font-14px;
+    ;
+  }
+
+  .mat-list-base[dense] .mat-list-item {
+    font-size: $font-12px;
+  }
+
+  .mat-list-base[dense] .mat-list-item .mat-line:nth-child(n+2) {
+    font-size: $font-12px;
+  }
+
+  .mat-list-base[dense] .mat-list-option {
+    font-size: $font-12px;
+  }
+
+  .mat-list-base[dense] .mat-list-option .mat-line:nth-child(n+2) {
+    font-size: $font-12px;
+  }
+
+  .mat-list-base[dense] .mat-subheader {
+    font-size: $font-12px;
+    ;
+  }
+
+  .mat-option {
+    font-size: $font-16px;
+  }
+
+  .mat-optgroup-label {
+    font-size: $font-14px;
+  }
+
+  .mat-simple-snackbar {
+    font-size: $font-14px;
+  }
+
+  .mat-nested-tree-node,
+  .mat-tree-node {
+    font-size: $font-14px;
+  }
+
+}
+
+.theme-font-large>* {
+  // we decrease font-size by 25%
+  $font-20px: 25px; // 5
+  $font-24px: 30px; // 6
+  $font-12px: 15px; // 3
+  $font-9px: 11.25px; // 2.25
+  $font-16px: 20px; // 4
+  $font-14px: 17.5px; // 3.5
+  $font-15px: 18.75px; // 3.75
+  $font-1162px: 14.525px; // 2.905
+  $font-938px: 11.725px; // 2.345
+  $font-112px: 140px; // 28
+  $font-56px: 70px; // 14
+  $font-45px: 56.25px; // 11.25
+  $font-34px: 42.5px; // 8.5
+  $font-18px: 22.5px; // 4.5
+  $font-13px: 16.25px; // 3.25
+  $font-11px: 13.75px; // 2.75
+  $font-10px: 12.5px; // 2.5
+
+  .mat-badge-small .mat-badge-content {
+    font-size: $font-9px;
+  }
+
+  .mat-badge-large .mat-badge-content {
+    font-size: $font-24px;
+  }
+
+  .mat-h1,
+  .mat-headline,
+  .mat-typography h1 {
+    font-size: $font-24px;
+  }
+
+  .mat-h2,
+  .mat-title,
+  .mat-typography h2 {
+    font-size: $font-20px;
+  }
+
+  .mat-h3,
+  .mat-subheading-2,
+  .mat-typography h3 {
+    font-size: $font-16px;
+  }
+
+  .mat-h4,
+  .mat-subheading-1,
+  .mat-typography h4 {
+    font-size: $font-15px;
+  }
+
+  .mat-h5,
+  .mat-typography h5 {
+    font-size: $font-1162px;
+  }
+
+  .mat-h6,
+  .mat-typography h6 {
+    font-size: $font-938px;
+  }
+
+  .mat-body-2,
+  .mat-body-strong {
+    font-size: $font-14px;
+  }
+
+  .mat-body,
+  .mat-body-1,
+  .mat-typography {
+    font-size: $font-14px;
+  }
+
+  .mat-caption,
+  .mat-small {
+    font-size: $font-12px;
+  }
+
+  .mat-display-4,
+  .mat-typography .mat-display-4 {
+    font-size: $font-112px;
+  }
+
+  .mat-display-3,
+  .mat-typography .mat-display-3 {
+    font-size: $font-56px;
+  }
+
+  .mat-display-2,
+  .mat-typography .mat-display-2 {
+    font-size: $font-45px;
+  }
+
+  .mat-display-1,
+  .mat-typography .mat-display-1 {
+    font-size: $font-34px;
+  }
+
+  .mat-bottom-sheet-container {
+    font-size: $font-14px;
+  }
+
+  .mat-button,
+  .mat-fab,
+  .mat-flat-button,
+  .mat-icon-button,
+  .mat-mini-fab,
+  .mat-raised-button,
+  .mat-stroked-button {
+    font-size: $font-14px;
+    ;
+  }
+
+  .mat-card-title {
+    font-size: $font-24px;
+  }
+
+  .mat-card-header .mat-card-title {
+    font-size: $font-20px;
+  }
+
+  .mat-card-content,
+  .mat-card-subtitle {
+    font-size: $font-14px;
+  }
+
+  .mat-checkbox-layout .mat-checkbox-label {
+    line-height: $font-24px;
+  }
+
+  .mat-chip {
+    font-size: $font-14px;
+    ;
+  }
+
+  .mat-chip .mat-chip-remove.mat-icon,
+  .mat-chip .mat-chip-trailing-icon.mat-icon {
+    font-size: $font-18px;
+  }
+
+  .mat-header-cell {
+    font-size: $font-12px;
+  }
+
+  .mat-cell,
+  .mat-footer-cell {
+    font-size: $font-14px;
+  }
+
+  .mat-calendar-body {
+    font-size: $font-13px;
+  }
+
+  .mat-calendar-body-label,
+  .mat-calendar-period-button {
+    font-size: $font-14px;
+    ;
+  }
+
+  .mat-calendar-table-header th {
+    font-size: $font-11px;
+    ;
+  }
+
+  .mat-dialog-title {
+    font-size: $font-20px;
+  }
+
+  .mat-expansion-panel-header {
+    font-size: $font-15px;
+  }
+
+  .mat-expansion-panel-content {
+    font-size: $font-14px;
+  }
+
+  .mat-grid-tile-footer,
+  .mat-grid-tile-header {
+    font-size: $font-14px;
+  }
+
+  .mat-grid-tile-footer .mat-line:nth-child(n+2),
+  .mat-grid-tile-header .mat-line:nth-child(n+2) {
+    font-size: $font-12px;
+  }
+
+  .mat-menu-item {
+    font-size: $font-14px;
+  }
+
+  .mat-paginator,
+  .mat-paginator-page-size .mat-select-trigger {
+    font-size: $font-12px;
+  }
+
+  .mat-slider-thumb-label-text {
+    font-size: $font-12px;
+  }
+
+  .mat-step-label {
+    font-size: $font-14px;
+  }
+
+  .mat-step-label-error {
+    font-size: $font-14px;
+  }
+
+  .mat-step-label-selected {
+    font-size: $font-14px;
+  }
+
+  .mat-tab-label,
+  .mat-tab-link {
+    font-size: $font-14px;
+    ;
+  }
+
+  .mat-toolbar,
+  .mat-toolbar h1,
+  .mat-toolbar h2,
+  .mat-toolbar h3,
+  .mat-toolbar h4,
+  .mat-toolbar h5,
+  .mat-toolbar h6 {
+    font-size: $font-20px;
+  }
+
+  .mat-tooltip {
+    font-size: $font-10px;
+  }
+
+  .mat-tooltip-handset {
+    font-size: $font-14px;
+  }
+
+  .mat-list-base .mat-list-item {
+    font-size: $font-16px;
+  }
+
+  .mat-list-base .mat-list-item .mat-line:nth-child(n+2) {
+    font-size: $font-14px;
+  }
+
+  .mat-list-base .mat-list-option {
+    font-size: $font-16px;
+  }
+
+  .mat-list-base .mat-list-option .mat-line:nth-child(n+2) {
+    font-size: $font-14px;
+  }
+
+  .mat-list-base .mat-subheader {
+    font-size: $font-14px;
+    ;
+  }
+
+  .mat-list-base[dense] .mat-list-item {
+    font-size: $font-12px;
+  }
+
+  .mat-list-base[dense] .mat-list-item .mat-line:nth-child(n+2) {
+    font-size: $font-12px;
+  }
+
+  .mat-list-base[dense] .mat-list-option {
+    font-size: $font-12px;
+  }
+
+  .mat-list-base[dense] .mat-list-option .mat-line:nth-child(n+2) {
+    font-size: $font-12px;
+  }
+
+  .mat-list-base[dense] .mat-subheader {
+    font-size: $font-12px;
+    ;
+  }
+
+  .mat-option {
+    font-size: $font-16px;
+  }
+
+  .mat-optgroup-label {
+    font-size: $font-14px;
+  }
+
+  .mat-simple-snackbar {
+    font-size: $font-14px;
+  }
+
+  .mat-nested-tree-node,
+  .mat-tree-node {
+    font-size: $font-14px;
+  }
+
+}

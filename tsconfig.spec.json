@@ -5,7 +5,15 @@
     "types": [
       "jasmine",
       "node"
-    ]
+    ],
+    "paths": {
+      "@modules/*": [
+        "src/modules/*"
+      ],
+      "@env/*": [
+        "src/environments/*"
+      ]
+    }
   },
   "files": [
     "src/test.ts",
