@@ -1,11 +1,6 @@
-<app-login></app-login>
-<!-- <mat-nav-list>
-  <a mat-list-item [routerLink]="['/']" aria-label="Home Link">
-    <mat-icon fxFlex="15">home</mat-icon>
-    <span>Home</span>
-  </a>
-  <a mat-list-item [routerLink]="['/forms']" aria-label="Forms Link">
-    <mat-icon fxFlex="15">dashboard</mat-icon>
-    <span>Forms</span>
-  </a>
-</mat-nav-list> -->
+<ng-container *ngIf="authenticationObservable | async; let authenticationObservableAsync; else notAuthenticated">
+  <app-authenticated-user-menu></app-authenticated-user-menu>
+</ng-container>
+<ng-template #notAuthenticated>
+  <app-login></app-login>
+</ng-template>

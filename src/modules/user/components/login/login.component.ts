@@ -1,5 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { ModuleInterface } from '@modules/user/state/interface';
+
+import { LOGIN } from '@modules/user/state/authentication/actions';
 
 @Component({
   selector: 'app-login',
@@ -11,7 +15,7 @@ export class LoginComponent implements OnInit {
 
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder, private store: Store<ModuleInterface>) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -22,7 +26,10 @@ export class LoginComponent implements OnInit {
 
   submit() {
     if (this.loginForm.valid) {
-      console.log(this.loginForm.value);
+      this.store.dispatch({
+        type: LOGIN,
+        result: this.loginForm.value
+      });
     }
   }
 

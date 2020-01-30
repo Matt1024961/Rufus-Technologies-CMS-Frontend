@@ -1,4 +1,4 @@
-import { INIT, CLEAR, LOCALSTORAGE, STORE } from './actions';
+import { INIT, ADD, REMOVE, LOCALSTORAGE, STORE } from './actions';
 
 import { ReducerInterface } from './interface';
 
@@ -11,17 +11,20 @@ export function reducer(state: ReducerInterface = null, action: any) {
 
     case STORE: {
       if (action.result) {
-        state = Object.assign({}, action.result);
+        return [].concat(action.result);
       } else {
-        state = null;
+        return null;
       }
+    }
+
+    case ADD: {
       return state;
     }
 
-    case CLEAR: {
-      state = null;
+    case REMOVE: {
       return state;
     }
+
     case LOCALSTORAGE: {
       return state;
     }

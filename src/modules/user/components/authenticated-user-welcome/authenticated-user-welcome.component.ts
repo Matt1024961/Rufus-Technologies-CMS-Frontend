@@ -2,13 +2,15 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { ModuleInterface } from '@modules/user/state/interface';
 import { Observable } from 'rxjs';
+import { LOGOUT } from '@modules/user/state/authentication/actions';
+
 @Component({
-  selector: 'app-user-menu',
-  templateUrl: './user-menu.component.html',
-  styleUrls: ['./user-menu.component.scss'],
+  selector: 'app-authenticated-user-welcome',
+  templateUrl: './authenticated-user-welcome.component.html',
+  styleUrls: ['./authenticated-user-welcome.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class UserMenuComponent implements OnInit {
+export class AuthenticatedUserWelcomeComponent implements OnInit {
 
   public authenticationObservable: Observable<ModuleInterface>;
 
@@ -21,4 +23,11 @@ export class UserMenuComponent implements OnInit {
   ngOnInit() {
   }
 
+  logout(event) {
+    if (event.isTrusted) {
+      this.store.dispatch({
+        type: LOGOUT
+      });
+    }
+  }
 }

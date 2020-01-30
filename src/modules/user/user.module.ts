@@ -16,12 +16,25 @@ import { UserConfigService } from '@modules/user/services/user-config/user-confi
 import { RestfulService } from '@modules/user/services/restful/restful.service';
 import { UserConfigsFactory } from '@modules/user/factories/user-configs.factory';
 
+import { AuthenticationService } from '@modules/user/services/authentication/authentication.service';
+import { AuthenticationFactory } from '@modules/user/factories/authentication.factory';
+
 import { ThemeComponent } from '@modules/user/components/theme/theme.component';
 import { UserMenuComponent } from '@modules/user/components/user-menu/user-menu.component';
 import { LoginComponent } from '@modules/user/components/login/login.component';
+import { AuthenticatedUserMenuComponent } from './components/authenticated-user-menu/authenticated-user-menu.component';
+import { AuthenticatedUserWelcomeComponent } from './components/authenticated-user-welcome/authenticated-user-welcome.component';
+import { AuthenticatedUserFavoritesComponent } from './components/authenticated-user-favorites/authenticated-user-favorites.component';
 
 @NgModule({
-  declarations: [UserMenuComponent, ThemeComponent, LoginComponent],
+  declarations: [
+    UserMenuComponent,
+    ThemeComponent,
+    LoginComponent,
+    AuthenticatedUserMenuComponent,
+    AuthenticatedUserWelcomeComponent,
+    AuthenticatedUserFavoritesComponent
+  ],
   imports: [
     CommonModule,
     ReactiveFormsModule,
@@ -42,6 +55,14 @@ import { LoginComponent } from '@modules/user/components/login/login.component';
       useFactory: UserConfigsFactory,
       deps: [
         UserConfigService
+      ],
+      multi: true
+    },
+    {
+      provide: APP_INITIALIZER,
+      useFactory: AuthenticationFactory,
+      deps: [
+        AuthenticationService
       ],
       multi: true
     },

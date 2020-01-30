@@ -1,0 +1,6 @@
+<ng-container *ngIf="favoritesObservable | async; let favoritesObservableAsync;">
+  <mat-list role="list">
+    <a mat-list-item *ngFor="let link of favoritesObservableAsync" href="{{link.link}}"
+      target="{{link.internal ? '_self' : '_blank'}}">{{link.title}}</a>
+  </mat-list>
+</ng-container>

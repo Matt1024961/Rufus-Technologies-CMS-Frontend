@@ -1,6 +1,5 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { Store } from '@ngrx/store';
-import { ReducerInterface } from '@modules/user/state/user-config/interface';
 import { ModuleInterface } from '@modules/user/state/interface';
 import { Observable } from 'rxjs';
 
@@ -14,7 +13,7 @@ import { UPDATE } from '@modules/user/state/user-config/actions';
 })
 export class ThemeComponent implements OnInit {
 
-  public themeObservable: Observable<ReducerInterface>;
+  public themeObservable: Observable<ModuleInterface>;
 
   themes = [
     {
@@ -52,7 +51,7 @@ export class ThemeComponent implements OnInit {
     },
   ];
 
-  constructor(private store: Store<ReducerInterface>) {
+  constructor(private store: Store<ModuleInterface>) {
     this.themeObservable = store.select(states => {
       return states['user']['user-config'];
     });
@@ -89,39 +88,5 @@ export class ThemeComponent implements OnInit {
         results: newFontSize
       });
     }
-    // const newTheme = {
-    //   'theme-name': theme['name'],
-    //   'theme-href': theme['href'],
-    // };
-    // this.store.dispatch({
-    //   type: UPDATE,
-    //   results: newTheme
-    // });
-
-    // const htmlTag = document.querySelector('html');
-    // htmlTag.className = '';
-    // switch (event.value) {
-    //   case 0: {
-    //     htmlTag.className = 'theme-font-small';
-    //     break;
-    //   }
-    //   case 1: {
-    //     //htmlTag.className = 'theme-font-small';
-    //     break;
-    //   }
-    //   case 2: {
-    //     htmlTag.className = 'theme-font-large';
-    //     break;
-    //   }
-    //   default: {
-    //     console.error('hmmmm');
-    //     break
-    //   }
-    // }
-
-  }
-
-  test(event) {
-    console.log(event);
   }
 }

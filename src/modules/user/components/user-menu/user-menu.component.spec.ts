@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideMockStore } from '@ngrx/store/testing';
 
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
@@ -8,12 +9,23 @@ import { UiModule } from '@modules/ui/ui.module';
 describe('UserMenuComponent', () => {
   let component: UserMenuComponent;
   let fixture: ComponentFixture<UserMenuComponent>;
-
+  const initialState = {
+    user: {
+      'user-config': {
+        'theme-name': 'indigo-pink',
+        'theme-href': 'assets/themes/indigo-pink.css',
+        font: 1
+      }
+    }
+  };
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [UserMenuComponent],
       imports: [
         UiModule,
+      ],
+      providers: [
+        provideMockStore({ initialState })
       ],
       schemas: [CUSTOM_ELEMENTS_SCHEMA]
     })

@@ -1,0 +1,21 @@
+<ng-container *ngIf="authenticationObservable | async; let authenticationObservableAsync;">
+  <mat-card class="login-card">
+
+    <mat-card-title>Hello, {{ authenticationObservableAsync.name }}</mat-card-title>
+
+    <mat-card-subtitle>Last Login:{{ authenticationObservableAsync['last-login'] | date:'medium' }}</mat-card-subtitle>
+
+    <mat-card-content>
+
+      <app-authenticated-user-favorites></app-authenticated-user-favorites>
+
+    </mat-card-content>
+    <mat-card-actions fxLayoutAlign="center center" fxLayout="column">
+      <div fxFlexfill>
+        <button (click)="logout($event)" type="button" mat-raised-button color="warn">Logout</button>
+      </div>
+    </mat-card-actions>
+
+  </mat-card>
+
+</ng-container>

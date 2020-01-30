@@ -1,14 +1,13 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { ReactiveFormsModule } from '@angular/forms';
-import { provideMockStore } from '@ngrx/store/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
+import { provideMockStore } from '@ngrx/store/testing';
 
-import { LoginComponent } from './login.component';
+import { AuthenticatedUserFavoritesComponent } from './authenticated-user-favorites.component';
 import { UiModule } from '@modules/ui/ui.module';
 
-describe('LoginComponent', () => {
-  let component: LoginComponent;
-  let fixture: ComponentFixture<LoginComponent>;
+describe('AuthenticatedUserFavoritesComponent', () => {
+  let component: AuthenticatedUserFavoritesComponent;
+  let fixture: ComponentFixture<AuthenticatedUserFavoritesComponent>;
 
   const initialState = {
     user: {
@@ -22,9 +21,8 @@ describe('LoginComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [LoginComponent],
+      declarations: [AuthenticatedUserFavoritesComponent],
       imports: [
-        ReactiveFormsModule,
         UiModule,
       ],
       providers: [
@@ -36,7 +34,7 @@ describe('LoginComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
+    fixture = TestBed.createComponent(AuthenticatedUserFavoritesComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

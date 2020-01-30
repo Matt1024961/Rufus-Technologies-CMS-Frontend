@@ -4,10 +4,14 @@ import { ActionReducer, ActionReducerMap, combineReducers } from '@ngrx/store';
 
 // associated reducers
 import { reducer as reducer1 } from './user-config';
+import { reducer as reducer2 } from './authentication';
+import { reducer as reducer3 } from './favorites';
 
 
 const reducersMap: ActionReducerMap<any> = {
   'user-config': reducer1,
+  authentication: reducer2,
+  favorites: reducer3,
 };
 
 const reducer: ActionReducer<any> = compose(combineReducers)(reducersMap);

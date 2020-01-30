@@ -13,35 +13,37 @@
   </mat-toolbar-row>
 </mat-toolbar>
 
-<mat-sidenav-container hasBackdrop="false" autosize="false" fxFlexFill>
-  <mat-sidenav #sidebarMainMenu mode="push" position="start" measureScrollOffset="100" fxLayout="column" fxFlex="15%"
-    fxFlexFill>
-    <mat-toolbar color="primary">
-      <mat-toolbar-row fxLayoutAlign="start center" fxFlex="100%">
-        <button mat-icon-button (click)="sidebarMainMenu.toggle()">
-          <mat-icon aria-label="Main Menu Button">close</mat-icon>
-        </button>
-        <span>Main Menu</span>
-      </mat-toolbar-row>
-    </mat-toolbar>
-    <app-main-menu></app-main-menu>
-  </mat-sidenav>
+<div fxLayout="column">
+  <mat-sidenav-container hasBackdrop="false" autosize="false" fxFlex="0 0 calc(100vh - 64px)">
+    <mat-sidenav #sidebarMainMenu mode="push" position="start" measureScrollOffset="100" fxLayout="column" fxFlex="15%"
+      fxFlexFill>
+      <mat-toolbar color="primary">
+        <mat-toolbar-row fxLayoutAlign="start center" fxFlex="100%">
+          <button mat-icon-button (click)="sidebarMainMenu.toggle()">
+            <mat-icon aria-label="Main Menu Button">close</mat-icon>
+          </button>
+          <span>Main Menu</span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <app-main-menu></app-main-menu>
+    </mat-sidenav>
 
-  <mat-sidenav #sidebarUserMenu mode="push" position="end" measureScrollOffset="100" fxLayout="column" fxFlex="15%"
-    fxFlexFill>
-    <mat-toolbar color="primary">
-      <mat-toolbar-row fxLayoutAlign="start center" fxFlex="100%">
-        <button mat-icon-button (click)="sidebarUserMenu.toggle()">
-          <mat-icon aria-label="User Menu Button">close</mat-icon>
-        </button>
-        <span>User Menu</span>
-      </mat-toolbar-row>
-    </mat-toolbar>
-    <app-user-menu></app-user-menu>
-  </mat-sidenav>
-  <mat-sidenav-content fxLayout="column" fxFlexFill>
-    <div fxFlex="0 0 calc(100vh - 64px)">
-      <router-outlet></router-outlet>
-    </div>
-  </mat-sidenav-content>
-</mat-sidenav-container>
+    <mat-sidenav #sidebarUserMenu mode="push" position="end" measureScrollOffset="100" fxLayout="column" fxFlex="25%"
+      fxFlexFill>
+      <mat-toolbar color="primary">
+        <mat-toolbar-row fxLayoutAlign="start center" fxFlex="100%">
+          <button mat-icon-button (click)="sidebarUserMenu.toggle()">
+            <mat-icon aria-label="User Menu Button">close</mat-icon>
+          </button>
+          <span>User Menu</span>
+        </mat-toolbar-row>
+      </mat-toolbar>
+      <app-user-menu></app-user-menu>
+    </mat-sidenav>
+    <mat-sidenav-content fxLayout="column" fxFlexFill>
+      <div fxFlex="0 0 calc(100vh - 164px)">
+        <router-outlet></router-outlet>
+      </div>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
