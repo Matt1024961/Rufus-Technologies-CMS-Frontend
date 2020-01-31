@@ -1,6 +1,6 @@
 {
   "name": "boiler-plate",
-  "version": "0.0.0",
+  "version": "0.0.1-DEV",
   "scripts": {
     "analyze": "webpack-bundle-analyzer dist/Boiler-Plate/stats-es2015.json",
     "ng": "ng",

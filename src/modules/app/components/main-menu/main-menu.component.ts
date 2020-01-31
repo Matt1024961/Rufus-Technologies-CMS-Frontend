@@ -1,4 +1,6 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { environment } from '@env/environment';
+
 
 @Component({
   selector: 'app-main-menu',
@@ -8,7 +10,9 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 })
 export class MainMenuComponent implements OnInit {
 
-  constructor() { }
+  public version: string = environment.version;
+  constructor() {
+  }
 
   ngOnInit() {
   }
