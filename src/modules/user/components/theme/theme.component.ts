@@ -3,7 +3,7 @@ import { Store } from '@ngrx/store';
 import { ModuleInterface } from '@modules/user/state/interface';
 import { Observable } from 'rxjs';
 
-import { UPDATE } from '@modules/user/state/user-config/actions';
+import { UPDATE } from '@modules/user/state/theme/actions';
 
 @Component({
   selector: 'app-theme',
@@ -53,7 +53,7 @@ export class ThemeComponent implements OnInit {
 
   constructor(private store: Store<ModuleInterface>) {
     this.themeObservable = store.select(states => {
-      return states['user']['user-config'];
+      return states['user']['theme'];
     });
   }
 
@@ -66,8 +66,8 @@ export class ThemeComponent implements OnInit {
 
     if (event.isTrusted && theme && theme.hasOwnProperty('name') && theme.hasOwnProperty('href')) {
       const newTheme = {
-        'theme-name': theme['name'],
-        'theme-href': theme['href'],
+        name: theme['name'],
+        href: theme['href'],
       };
       this.store.dispatch({
         type: UPDATE,

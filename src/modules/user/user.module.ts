@@ -12,9 +12,9 @@ import { EffectsModule } from '@ngrx/effects';
 import { ModuleReducers } from '@modules/user/state/';
 import { ModuleEffects } from '@modules/user/state/effects';
 
-import { UserConfigService } from '@modules/user/services/user-config/user-config.service';
+import { ThemeService } from '@modules/user/services/theme/theme.service';
 import { RestfulService } from '@modules/user/services/restful/restful.service';
-import { UserConfigsFactory } from '@modules/user/factories/user-configs.factory';
+import { ThemeFactory } from '@modules/user/factories/theme.factory';
 
 import { AuthenticationService } from '@modules/user/services/authentication/authentication.service';
 import { AuthenticationFactory } from '@modules/user/factories/authentication.factory';
@@ -49,12 +49,12 @@ import { AuthenticatedUserFavoritesComponent } from './components/authenticated-
   exports: [UserMenuComponent, ThemeComponent],
   providers: [
     RestfulService,
-    UserConfigService,
+    ThemeService,
     {
       provide: APP_INITIALIZER,
-      useFactory: UserConfigsFactory,
+      useFactory: ThemeFactory,
       deps: [
-        UserConfigService
+        ThemeService
       ],
       multi: true
     },

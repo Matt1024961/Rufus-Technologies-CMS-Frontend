@@ -8,13 +8,13 @@ export class RestfulService {
 
   constructor() { }
 
-  getUserConfig() {
+  getTheme() {
     const simpleObservable = new Observable((observer) => {
       const currentTheme = JSON.parse(localStorage.getItem('theme'));
 
       const tempReturn = {
-        'theme-name': currentTheme && currentTheme['theme-name'] ? currentTheme['theme-name'] : 'indigo-pink',
-        'theme-href': currentTheme && currentTheme['theme-href'] ? currentTheme['theme-href'] : 'assets/themes/indigo-pink.css',
+        name: currentTheme && currentTheme['name'] ? currentTheme['name'] : 'indigo-pink',
+        href: currentTheme && currentTheme['href'] ? currentTheme['href'] : 'assets/themes/indigo-pink.css',
         font: currentTheme && currentTheme.font ? currentTheme.font : 1
       };
 

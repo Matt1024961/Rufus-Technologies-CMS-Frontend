@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { INIT } from '@modules/user/state/user-config/actions';
+import { INIT } from '@modules/user/state/theme/actions';
 
 import { ModuleInterface } from '@modules/user/state/interface';
 
@@ -11,17 +11,17 @@ import { ModuleInterface } from '@modules/user/state/interface';
 @Injectable({
   providedIn: 'root'
 })
-export class UserConfigService {
+export class ThemeService {
 
-  public userConfigObservable: Observable<ModuleInterface>;
+  public themeObservable: Observable<ModuleInterface>;
 
   constructor(
     private store: Store<ModuleInterface>,
   ) {
 
-    this.userConfigObservable = store.select(states => {
+    this.themeObservable = store.select(states => {
       if (states && states['user']) {
-        return states['user']['user-config'];
+        return states['user']['theme'];
       }
     });
   }

@@ -10,8 +10,8 @@
     </div> -->
     <button mat-menu-item *ngFor="let theme of themes" (click)="updateTheme($event, theme); $event.stopPropagation();">
       <mat-icon [ngClass]="{'theme-selected-icon': currentTheme === theme}"
-        [color]="themeObservableAsync['theme-name'] === theme.name ? 'accent' : undefined">
-        {{themeObservableAsync['theme-name'] === theme.name ? 'radio_button_checked' : 'radio_button_unchecked'}}
+        [color]="themeObservableAsync['name'] === theme.name ? 'accent' : undefined">
+        {{themeObservableAsync['name'] === theme.name ? 'radio_button_checked' : 'radio_button_unchecked'}}
       </mat-icon>
       <span>{{theme.displayName}}</span>
       <mat-icon [class]="'theme-example-icon ' + theme.name"></mat-icon>
