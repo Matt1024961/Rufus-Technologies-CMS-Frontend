@@ -47,7 +47,7 @@ import { MainMenuComponent } from '@modules/app/components/main-menu/main-menu.c
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
-      name: 'Boiler Plate (Update Name)'
+      name: 'Boiler Plate Store'
     }),
 
     EffectsModule.forRoot([]),
