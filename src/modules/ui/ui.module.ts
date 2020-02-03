@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+// import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { MatCheckboxModule } from '@angular/material';
@@ -38,7 +38,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
   declarations: [],
   imports: [
     CommonModule,
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     FlexLayoutModule,
     MatCheckboxModule,
     MatCheckboxModule,
@@ -73,7 +73,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatPaginatorModule
   ],
   exports: [
-    BrowserAnimationsModule,
+    // BrowserAnimationsModule,
     FlexLayoutModule,
     MatCheckboxModule,
     MatCheckboxModule,

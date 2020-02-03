@@ -23,6 +23,21 @@ body {
   display: flex;
 }
 
+.fx-flex-fill-host {
+  height: 100%;
+  min-height: 100%;
+  min-width: 100%;
+  width: 100%;
+}
+
+.margin-1 {
+  margin: 1rem;
+}
+
+.overflow-x-auto {
+  overflow-x: auto;
+}
+
 // $font-20px: 20px; // 5
 // $font-24px: 24px; // 6
 // $font-12px: 12px; // 3

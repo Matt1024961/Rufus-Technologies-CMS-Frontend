@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER } from '@angular/core';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppRoutingModule } from '@modules/app/app-routing.module';
 import { UiModule } from '@modules/ui/ui.module';
@@ -27,6 +28,7 @@ import { MainMenuComponent } from '@modules/app/components/main-menu/main-menu.c
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
 
     AppRoutingModule,
 
@@ -48,6 +50,7 @@ import { MainMenuComponent } from '@modules/app/components/main-menu/main-menu.c
       maxAge: 25,
       logOnly: environment.production,
       name: 'Boiler Plate Store'
+
     }),
 
     EffectsModule.forRoot([]),
