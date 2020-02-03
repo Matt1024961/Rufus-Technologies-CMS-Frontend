@@ -1,0 +1,28 @@
+<form [formGroup]="forgotForm" (ngSubmit)="submit();" fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+  <mat-card>
+    <mat-card-title>Forgot your password?</mat-card-title>
+    <mat-card-content>
+
+      <mat-form-field appearance="outline" fxFlexFill>
+        <input type="text" matInput placeholder="Email Address" formControlName="emailAddress">
+        <mat-error *ngIf="!forgotForm.get('emailAddress').valid && forgotForm.get('emailAddress').touched">
+          Please enter a valid Email Address.
+        </mat-error>
+      </mat-form-field>
+
+      <p>
+        Provide the same Email Address you signed up with above.
+      </p>
+      <p>
+        That Email Address will then receive additional information.
+      </p>
+
+    </mat-card-content>
+    <mat-card-actions fxLayoutAlign="center center" fxLayout="column">
+      <div fxFlexfill>
+        <button type="submit" mat-raised-button color="primary">Submit</button>
+      </div>
+    </mat-card-actions>
+
+  </mat-card>
+</form>
