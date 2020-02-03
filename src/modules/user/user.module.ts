@@ -25,6 +25,7 @@ import { LoginComponent } from '@modules/user/components/login/login.component';
 import { AuthenticatedUserMenuComponent } from './components/authenticated-user-menu/authenticated-user-menu.component';
 import { AuthenticatedUserWelcomeComponent } from './components/authenticated-user-welcome/authenticated-user-welcome.component';
 import { AuthenticatedUserFavoritesComponent } from './components/authenticated-user-favorites/authenticated-user-favorites.component';
+import { ForgotComponent } from './components/forgot/forgot.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { AuthenticatedUserFavoritesComponent } from './components/authenticated-
     LoginComponent,
     AuthenticatedUserMenuComponent,
     AuthenticatedUserWelcomeComponent,
-    AuthenticatedUserFavoritesComponent
+    AuthenticatedUserFavoritesComponent,
+    ForgotComponent
   ],
   imports: [
     CommonModule,

@@ -82,6 +82,11 @@ export class RestfulService {
           link: 'https://material.io/resources/icons/?style=baseline',
           internal: false,
           title: 'Material Design Icons'
+        },
+        {
+          link: 'https://github.com/angular/flex-layout',
+          internal: false,
+          title: 'Flex-Layout'
         }, {
           link: 'https://ngrx.io/',
           internal: false,
