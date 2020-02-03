@@ -16,7 +16,7 @@
 
 <div fxLayout="column">
   <mat-sidenav-container hasBackdrop="false" autosize="false" fxFlex="0 0 calc(100vh - 64px)">
-    <mat-sidenav #sidebarMainMenu mode="push" position="start" measureScrollOffset="100" fxLayout="column" fxFlex="25%"
+    <mat-sidenav #sidebarMainMenu mode="over" position="start" measureScrollOffset="100" fxLayout="column" fxFlex="25%"
       fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="50%" fxFlex.lg="25%" fxFlex.xl="25%" fxFlexFill>
       <mat-toolbar color="primary">
         <mat-toolbar-row fxLayoutAlign="start center" fxFlex="100%">
@@ -29,7 +29,7 @@
       <app-main-menu></app-main-menu>
     </mat-sidenav>
 
-    <mat-sidenav #sidebarUserMenu mode="push" position="end" measureScrollOffset="100" fxLayout="column" fxFlex="25%"
+    <mat-sidenav #sidebarUserMenu mode="over" position="end" measureScrollOffset="100" fxLayout="column" fxFlex="25%"
       fxFlex.xs="100%" fxFlex.sm="100%" fxFlex.md="50%" fxFlex.lg="25%" fxFlex.xl="25%" fxFlexFill>
       <mat-toolbar color="primary">
         <mat-toolbar-row fxLayoutAlign="start center" fxFlex="100%">
@@ -44,6 +44,7 @@
     <mat-sidenav-content fxLayout="column" fxFlexFill>
       <div fxFlex="0 0 calc(100vh - 64px)">
         <router-outlet fxFlexFill></router-outlet>
+        so, test?
       </div>
     </mat-sidenav-content>
   </mat-sidenav-container>

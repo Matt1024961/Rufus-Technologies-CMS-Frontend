@@ -3,14 +3,14 @@
     <mat-card-title>Login</mat-card-title>
     <mat-card-content>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" fxFlexFill>
         <input type="text" matInput placeholder="Email Address" formControlName="emailAddress">
         <mat-error *ngIf="!loginForm.get('emailAddress').valid && loginForm.get('emailAddress').touched">
           Please enter a valid Email Address.
         </mat-error>
       </mat-form-field>
 
-      <mat-form-field appearance="outline">
+      <mat-form-field appearance="outline" fxFlexFill>
         <input type="password" matInput placeholder="Password" formControlName="password">
         <mat-error *ngIf="!loginForm.get('password').valid && loginForm.get('password').touched">
           Please enter your Password.
