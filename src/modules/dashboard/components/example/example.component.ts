@@ -13,4 +13,11 @@ export class ExampleComponent implements OnInit {
   ngOnInit() {
   }
 
+  randomNumber() {
+    const min = 5;
+    const max = 100;
+    const random = Math.floor(Math.random() * (max - min + 1)) + min;
+    return Array(random);
+  }
+
 }
