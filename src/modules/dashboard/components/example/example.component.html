@@ -1,9 +1,9 @@
 <mat-card fxLayout="column" fxFlexFill>
-  <mat-card-header fxFlex="20%">
+  <mat-card-header fxFlex.xs="15%" fxFlex.sm="15%" fxFlex="10%">
     <mat-card-title>Example Card</mat-card-title>
     <mat-card-subtitle>Just an example...</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content fxFlex="80%" class="overflow-x-auto">
+  <mat-card-content fxFlex.xs="70%" fxFlex.sm="70%" fxFlex="80%" class="overflow-x-auto margin-tb-05">
     <p *ngFor="let paragraph of randomNumber(); let i=index;">
       <strong>{{i+1}}):</strong>
       Lorem ipsum dolor sit amet,
@@ -24,7 +24,7 @@
       fermentum ullamcorper sapien.
     </p>
   </mat-card-content>
-  <mat-card-actions fxFlex="20%">
+  <mat-card-actions fxFlex.xs="15%" fxFlex.sm="15%" fxFlex="10%">
     <button mat-button>Some Action</button>
   </mat-card-actions>
 </mat-card>

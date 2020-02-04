@@ -1,0 +1,18 @@
+<mat-card fxLayout="column" fxFlexFill>
+  <mat-card-header fxFlex.xs="15%" fxFlex.sm="15%" fxFlex="10%">
+    <mat-card-title>Pie Graph</mat-card-title>
+    <mat-card-subtitle>Never enough pie</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content fxFlex.xs="70%" fxFlex.sm="70%" fxFlex="80%" fxLayoutAlign="center center" class="overflow-x-auto">
+    <div #graphParent fxFlexFill>
+      <div fxLayout="column" fxFlexFill>
+        <div fxFlex="100" fxFlexFill>
+          <canvas #graphCanvas></canvas>
+        </div>
+      </div>
+    </div>
+  </mat-card-content>
+  <mat-card-actions fxFlex.xs="15%" fxFlex.sm="15%" fxFlex="10%">
+    <button mat-button>Some Action</button>
+  </mat-card-actions>
+</mat-card>

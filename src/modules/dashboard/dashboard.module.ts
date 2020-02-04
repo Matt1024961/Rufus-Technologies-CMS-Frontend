@@ -6,10 +6,13 @@ import { UiModule } from '@modules/ui/ui.module';
 
 import { ContainerComponent } from './components/container/container.component';
 import { ExampleComponent } from './components/example/example.component';
+import { BarGraphComponent } from './components/bar-graph/bar-graph.component';
+import { PieGraphComponent } from './components/pie-graph/pie-graph.component';
+import { LineGraphComponent } from './components/line-graph/line-graph.component';
 
 
 @NgModule({
-  declarations: [ContainerComponent, ExampleComponent],
+  declarations: [ContainerComponent, ExampleComponent, BarGraphComponent, PieGraphComponent, LineGraphComponent],
   imports: [
     CommonModule,
     DashboardRoutingModule,
