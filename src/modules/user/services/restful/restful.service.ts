@@ -11,11 +11,10 @@ export class RestfulService {
   getTheme() {
     const simpleObservable = new Observable((observer) => {
       const currentTheme = JSON.parse(localStorage.getItem('theme'));
-
       const tempReturn = {
         name: currentTheme && currentTheme['name'] ? currentTheme['name'] : 'indigo-pink',
         href: currentTheme && currentTheme['href'] ? currentTheme['href'] : 'assets/themes/indigo-pink.css',
-        font: currentTheme && currentTheme.font ? currentTheme.font : 1
+        font: currentTheme && Number.isInteger(currentTheme.font) ? currentTheme.font : 1
       };
 
       observer.next(tempReturn);

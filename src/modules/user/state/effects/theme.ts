@@ -28,7 +28,6 @@ export class Effects {
     mergeMap(() =>
       this.restfulService.getTheme().pipe(
         map((results: any) => {
-
           return {
             type: LOCALSTORAGE,
             result: results
@@ -68,7 +67,6 @@ export class Effects {
         withLatestFrom(this.store.pipe(select(states => states['user']['user-config']))),
         map(([storeAction, store]) => {
           if (Object.keys(storeAction.result).length > 0) {
-
             if (storeAction.result['name'] && storeAction.result['href']) {
               document.getElementById('style-manager-theme').setAttribute('href', storeAction.result['href']);
             }

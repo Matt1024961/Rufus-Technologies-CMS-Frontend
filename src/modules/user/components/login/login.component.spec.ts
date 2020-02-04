@@ -16,8 +16,8 @@ describe('LoginComponent', () => {
   const initialState = {
     user: {
       'user-config': {
-        'theme-name': 'indigo-pink',
-        'theme-href': 'assets/themes/indigo-pink.css',
+        name: 'indigo-pink',
+        href: 'assets/themes/indigo-pink.css',
         font: 1
       }
     }
