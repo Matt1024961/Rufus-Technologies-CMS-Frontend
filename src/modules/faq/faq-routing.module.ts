@@ -1,0 +1,19 @@
+import { NgModule } from '@angular/core';
+import { Routes, RouterModule } from '@angular/router';
+
+import { ContainerComponent } from './components/container/container.component';
+
+const routes: Routes = [{
+  path: '',
+  component: ContainerComponent,
+  data: {
+    // TODO
+    title: 'FAQs'
+  }
+}];
+
+@NgModule({
+  imports: [RouterModule.forChild(routes)],
+  exports: [RouterModule]
+})
+export class FaqRoutingModule { }

@@ -13,6 +13,18 @@ const routes: Routes = [{
   data: {
     title: 'Dashboard'
   }
+}, {
+  path: 'faqs',
+  loadChildren: () =>
+    import('src/modules/faq/faq.module').then(
+      m => m.FaqModule
+    ),
+  canActivate: [
+    // TODO
+  ],
+  data: {
+    title: 'FAQs'
+  }
 }];
 
 @NgModule({
