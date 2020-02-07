@@ -14,7 +14,11 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule, routerReducer } from '@ngrx/router-store';
 
+import { ModuleReducers } from '@modules/app/state/';
 import { CustomRouter } from '@modules/app/state/router/custom-router';
+
+import { ResponsiveService } from '@modules/app/services/responsive/responsive.service';
+import { ResponsiveFactory } from '@modules/app/factories/responsive.factory';
 
 import { RootComponent } from '@modules/app/components/root/root.component';
 import { BreadcrumbComponent } from '@modules/app/components/breadcrumb/breadcrumb.component';
@@ -40,6 +44,7 @@ import { MainMenuComponent } from '@modules/app/components/main-menu/main-menu.c
       runtimeChecks: {
       }
     }),
+    StoreModule.forFeature('app', ModuleReducers),
 
     StoreRouterConnectingModule.forRoot({
       serializer: CustomRouter,
@@ -57,6 +62,17 @@ import { MainMenuComponent } from '@modules/app/components/main-menu/main-menu.c
 
     UiModule,
     UserModule
+  ],
+  providers: [
+    ResponsiveService,
+    {
+      provide: APP_INITIALIZER,
+      useFactory: ResponsiveFactory,
+      deps: [
+        ResponsiveService
+      ],
+      multi: true
+    },
   ],
   bootstrap: [RootComponent],
 

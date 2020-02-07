@@ -1,18 +1,29 @@
 <mat-card fxLayout="column" fxFlexFill>
-  <mat-card-header fxFlex.xs="15%" fxFlex.sm="15%" fxFlex="10%">
+  <mat-card-header fxFlex="auto">
     <mat-card-title>Bar Graph</mat-card-title>
     <mat-card-subtitle>So many bars</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content fxFlex.xs="70%" fxFlex.sm="70%" fxFlex="80%" fxLayoutAlign="center center" class="overflow-x-auto">
-    <div #graphParent fxFlexFill>
+  <mat-card-content fxFlex="auto" class="overflow-y-hide mb-0">
+
+    <ng-container *ngIf="(chartObservable | async) === (null)">
+      <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+        <h5>Loading.</h5>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    </ng-container>
+
+    <div #graphParent fxFlexFill fxLayoutAlign="center center">
       <div fxLayout="column" fxFlexFill>
         <div fxFlex="100" fxFlexFill>
           <canvas #graphCanvas></canvas>
         </div>
       </div>
     </div>
+
   </mat-card-content>
-  <mat-card-actions fxFlex.xs="15%" fxFlex.sm="15%" fxFlex="10%">
-    <button mat-button>Some Action</button>
+  <mat-card-actions fxFlex="auto" fxLayoutAlign="end center">
+    <button (click)="reloadContent();" mat-mini-fab color="primary" aria-label="Reload this data.">
+      <mat-icon aria-hidden="false">autorenew</mat-icon>
+    </button>
   </mat-card-actions>
 </mat-card>

@@ -2,6 +2,9 @@ import { Component, OnInit, ChangeDetectionStrategy, ViewChild, ElementRef, Afte
 import * as Chart from 'chart.js';
 import { Observable, fromEvent, Subscription } from 'rxjs';
 import { debounceTime } from 'rxjs/operators';
+import { Store } from '@ngrx/store';
+import { ModuleInterface } from '@modules/dashboard/state/interface';
+import { INIT, UPDATE } from '@modules/dashboard/state/line-graph/actions';
 
 @Component({
   selector: 'app-line-graph',
@@ -18,28 +21,22 @@ export class LineGraphComponent implements OnInit, AfterViewInit {
   public resizeObservable: Observable<Event>;
   public resizeSubscription: Subscription;
   public graphObservable: Observable<any>;
+  public chartObservable: Observable<ModuleInterface>;
 
-  constructor() { }
+  constructor(private store: Store<ModuleInterface>) {
+    this.chartObservable = store.select(states => {
+      return states['dashboard']['line-graph'];
+    });
+  }
 
   ngOnInit() {
+    this.store.dispatch({
+      type: INIT
+    });
   }
 
   ngAfterViewInit() {
     this.beginObserver();
-  }
-
-  generateRandomGraphData(arrayLength) {
-    const newArray = new Array(arrayLength);
-    for (let i = 0; i < arrayLength; i++) {
-      const min = 1;
-      const max = 120;
-      const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-      newArray[i] = {
-        label: `Label ${i + 1}`,
-        data: randomNumber
-      };
-    }
-    return newArray;
   }
 
   beginObserver() {
@@ -47,13 +44,17 @@ export class LineGraphComponent implements OnInit, AfterViewInit {
     this.resizeSubscription = this.resizeObservable
       .pipe(debounceTime(300))
       .subscribe(evt => {
-        this.drawGraph(true);
+        this.drawGraph(true, this.graphData);
       });
-    // the initial rendering of the graph
-    this.drawGraph();
+    this.chartObservable.subscribe((options) => {
+      if (options) {
+        this.drawGraph(true, options);
+      }
+    });
   }
 
-  drawGraph(drawGraphAgain = false) {
+  drawGraph(drawGraphAgain = false, graphData) {
+    this.graphData = Array.from(graphData);
     if (this.renderedChart) {
       this.renderedChart.destroy();
     }
@@ -79,11 +80,6 @@ export class LineGraphComponent implements OnInit, AfterViewInit {
       'rgba(153, 102, 255, 1)',
       'rgba(255, 159, 64, 1)'
     ];
-
-    const min = 5;
-    const max = 12;
-    const randomNumber = Math.floor(Math.random() * (max - min + 1)) + min;
-    this.graphData = this.generateRandomGraphData(randomNumber);
 
     const repeatArray = (arr, times) => {
       return Array(times)
@@ -143,5 +139,14 @@ export class LineGraphComponent implements OnInit, AfterViewInit {
       }
     };
     this.renderedChart = new Chart(ctx, chartOptions);
+  }
+
+  reloadContent() {
+    if (this.renderedChart) {
+      this.renderedChart.destroy();
+    }
+    this.store.dispatch({
+      type: UPDATE
+    });
   }
 }

@@ -14,8 +14,11 @@ body {
   //overflow: hidden;
 }
 
+.mat-grid-tile .mat-figure {
+  padding: 5px !important;
+}
+
 .fx-host {
-  flex-basis: calc(100vh - 64px);
   box-sizing: border-box;
   max-height: calc(100vh - 64px);
   min-height: calc(100vh - 64px);
@@ -30,8 +33,16 @@ body {
   width: 100%;
 }
 
+.dark-bg {
+  background-color: darkgray;
+}
+
 .margin-05 {
-  margin: .5rem;
+  margin: 5px;
+}
+
+.padding-05 {
+  padding: 5px;
 }
 
 .margin-tb-05 {
@@ -40,6 +51,10 @@ body {
 
 .overflow-x-auto {
   overflow-x: auto;
+}
+
+.overflow-y-hide {
+  overflow-y: hidden;
 }
 
 // $font-20px: 20px; // 5

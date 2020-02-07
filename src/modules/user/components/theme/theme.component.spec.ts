@@ -10,9 +10,9 @@ describe('ThemeComponent', () => {
 
   const initialState = {
     user: {
-      'user-config': {
-        'theme-name': 'indigo-pink',
-        'theme-href': 'assets/themes/indigo-pink.css',
+      theme: {
+        name: 'indigo-pink',
+        href: 'assets/themes/indigo-pink.css',
         font: 1
       }
     }
