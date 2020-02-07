@@ -22,7 +22,8 @@
 
   </mat-card-content>
   <mat-card-actions fxFlex="auto" fxLayoutAlign="end center">
-    <button (click)="reloadContent();" mat-mini-fab color="primary" aria-label="Reload this data.">
+    <button (click)="reloadContent();" *ngIf="(chartObservable | async) !== (null)" mat-mini-fab color="primary"
+      aria-label="Reload this data.">
       <mat-icon aria-hidden="false">autorenew</mat-icon>
     </button>
   </mat-card-actions>
