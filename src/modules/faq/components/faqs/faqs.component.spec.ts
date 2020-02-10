@@ -1,25 +1,26 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { provideMockStore } from '@ngrx/store/testing';
 
-import { MainMenuComponent } from './main-menu.component';
+import { FaqsComponent } from './faqs.component';
 import { UiModule } from '@modules/ui/ui.module';
 
-describe('MainMenuComponent', () => {
-  let component: MainMenuComponent;
-  let fixture: ComponentFixture<MainMenuComponent>;
+describe('FaqsComponent', () => {
+  let component: FaqsComponent;
+  let fixture: ComponentFixture<FaqsComponent>;
   const initialState = {
-    app: {
-      menus: null
+    faq: {
+      faqs: null
     }
   };
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [MainMenuComponent],
+      declarations: [FaqsComponent],
       imports: [
-        RouterTestingModule,
+        BrowserAnimationsModule,
         UiModule,
       ],
+
       providers: [
         provideMockStore({ initialState })
       ],
@@ -28,7 +29,7 @@ describe('MainMenuComponent', () => {
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(MainMenuComponent);
+    fixture = TestBed.createComponent(FaqsComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

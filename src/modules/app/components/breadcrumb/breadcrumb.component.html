@@ -1,13 +1,16 @@
-<div *ngIf="breadcrumbObservable | async; let breadcrumbObservableAsync" fxLayoutAlign="center center"
-  fxLayout="column">
-  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Toggle the Breadcrumbs menu">
-    <mat-icon>link</mat-icon>
-  </button>
-  <mat-menu #menu="matMenu">
-    <ng-container *ngFor="let current of getBreadcrumbs(); let i = index">
-      <button mat-menu-item [routerLink]="[current['url']]">
-        {{ current["title"] }}
-      </button>
-    </ng-container>
-  </mat-menu>
-</div>
+<ng-container *ngIf="breadcrumbObservable | async; let breadcrumbObservableAsync">
+
+  <div fxLayoutAlign="center center" fxLayout="column">
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Toggle the Breadcrumbs menu">
+      <mat-icon>link</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <ng-container *ngFor="let current of getBreadcrumbs(); let i = index">
+        <button mat-menu-item [routerLink]="[current['url']]">
+          {{ current["title"] }}
+        </button>
+      </ng-container>
+    </mat-menu>
+  </div>
+
+</ng-container>

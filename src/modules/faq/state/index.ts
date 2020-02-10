@@ -3,12 +3,10 @@ import { compose } from '@ngrx/store';
 import { ActionReducer, ActionReducerMap, combineReducers } from '@ngrx/store';
 
 // associated reducers
-import { reducer as reducer1 } from './responsive';
-import { reducer as reducer2 } from './menu';
+import { reducer as reducer1 } from './faqs';
 
 const reducersMap: ActionReducerMap<any> = {
-  responsive: reducer1,
-  menu: reducer2,
+  faqs: reducer1,
 };
 
 const reducer: ActionReducer<any> = compose(combineReducers)(reducersMap);

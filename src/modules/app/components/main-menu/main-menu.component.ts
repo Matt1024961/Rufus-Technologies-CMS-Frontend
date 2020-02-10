@@ -1,4 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { ModuleInterface } from '@modules/app/state/interface';
+import { STORE_MAIN } from '@modules/app/state/menu/actions';
 import { environment } from '@env/environment';
 
 
@@ -11,10 +14,15 @@ import { environment } from '@env/environment';
 export class MainMenuComponent implements OnInit {
 
   public version: string = environment.version;
-  constructor() {
+  constructor(private store: Store<ModuleInterface>) {
   }
 
   ngOnInit() {
   }
 
+  closeMenu() {
+    this.store.dispatch({
+      type: STORE_MAIN,
+    });
+  }
 }

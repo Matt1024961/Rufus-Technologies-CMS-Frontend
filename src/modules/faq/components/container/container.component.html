@@ -1,73 +1,17 @@
+<mat-card fxFlexFill>
+  <mat-card-header>
+    <mat-card-title>Frequently Asked Questions</mat-card-title>
+    <mat-card-subtitle>See Below</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <app-faqs></app-faqs>
+  </mat-card-content>
+  <mat-card-actions>
+    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" (page)="pageUpdate($event)">
+    </mat-paginator>
+  </mat-card-actions>
+</mat-card>
+
+
 <div>
-  <h1 class="mat-display-2">Frequently Asked Questions</h1>
-  <mat-accordion fxFlexFill>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          What is Wikipedia?
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      Further information: Wikipedia:About
-      Wikipedia is an encyclopedia which is free to use and edit. It is available in many different languages and on
-      many
-      devices. The content of Wikipedia is free to reproduce under the Creative Commons Attribution-Sharealike 3.0
-      Unported License (CC-BY-SA) and the GNU Free Documentation License (GFDL), except for some images.
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Who writes Wikipedia?
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      Further information: Wikipedia:Administration
-      Wikipedia is written and edited by volunteers from around the world. If you wish to help, you can start by
-      visiting
-      the community portal or the project pages.
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          Is Wikipedia censored?
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      Further information: Help:Censorship
-      Wikipedia uses the minimum of censorship. Generally, only gratuitous explicit (pornographic) images are removed.
-      The
-      community of Wikipedia editors determine what text and images are displayed, so there may be material that offends
-      some people. There may be those who are offended, shocked or disgusted by medical images, nudity, religious
-      imagery
-      and controversial images.
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          How do I search Wikipedia?
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      Further information: Help:Searching
-      Shortcut: WP:RFAQ#SEARCH
-      There is a search box in the upper-right corner of the screen, with the word Search in it. Just type what you are
-      looking for into the search box and press ↵ Enter.
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          How do I do research with Wikipedia?
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      Further information: Wikipedia:Researching with Wikipedia
-      Wikipedia can be a great tool for learning and researching information. However, as with all reference works, not
-      everything in Wikipedia is accurate, comprehensive, or unbiased.
-    </mat-expansion-panel>
-    <mat-expansion-panel>
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          What is the license agreement on the contents of Wikipedia?
-        </mat-panel-title>
-      </mat-expansion-panel-header>
-      Wikipedia articles are all free content and their text is covered by the Creative Commons Attribution-Sharealike
-      3.0
-      Unported License (CC-BY-SA) and in most cases the GNU Free Documentation License (GFDL). See Wikipedia:Copyrights.
-    </mat-expansion-panel>
-  </mat-accordion>
 </div>

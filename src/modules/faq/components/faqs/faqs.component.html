@@ -1,0 +1,19 @@
+<ng-container *ngIf="faqsObservable | async; let faqsObservableAsync; else loading">
+  <mat-accordion fxFlexFill>
+    <mat-expansion-panel *ngFor="let current of faqsObservableAsync; let i = index">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          {{current.question}}
+        </mat-panel-title>
+      </mat-expansion-panel-header>
+      {{current.answer}}
+    </mat-expansion-panel>
+  </mat-accordion>
+</ng-container>
+
+<ng-template #loading>
+  <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+    <h5>Loading.</h5>
+    <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+  </div>
+</ng-template>

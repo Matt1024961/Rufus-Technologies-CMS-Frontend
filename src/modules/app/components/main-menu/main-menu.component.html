@@ -1,9 +1,9 @@
 <mat-nav-list>
-  <a mat-list-item [routerLink]="['/']" aria-label="Dashboard Link">
+  <a mat-list-item [routerLink]="['/']" (click)="closeMenu();" aria-label="Dashboard Link">
     <mat-icon fxFlex="15">home</mat-icon>
     <span>Dashboard</span>
   </a>
-  <a mat-list-item [routerLink]="['/faqs']" aria-label="FAQs Link">
+  <a mat-list-item [routerLink]="['/faqs']" (click)="closeMenu();" aria-label="FAQs Link">
     <mat-icon fxFlex="15">question_answer</mat-icon>
     <span>FAQs</span>
   </a>
