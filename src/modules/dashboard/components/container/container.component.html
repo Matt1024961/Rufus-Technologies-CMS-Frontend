@@ -1,6 +1,6 @@
 <ng-container *ngIf="responsiveObservable | async; let responsiveObservableAsync;">
-  <mat-grid-list #gridContainer [cols]="getDynamicColumns(responsiveObservableAsync)" rowHeight="50%" fxFlexFill
-    gutterSize="0">
+  <mat-grid-list #gridContainer [cols]="getDynamicColumns(responsiveObservableAsync)"
+    [rowHeight]="getDynamicRowHeight(responsiveObservableAsync)" fxFlexFill gutterSize="0">
     <mat-grid-tile>
       <app-bar-graph fxFlexFill class="padding-05"></app-bar-graph>
     </mat-grid-tile>

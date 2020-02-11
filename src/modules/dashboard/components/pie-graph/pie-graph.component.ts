@@ -93,7 +93,6 @@ export class PieGraphComponent implements OnInit, AfterViewInit {
     this.graphData.forEach(current => {
       labelsOptionsArray.push(current.label);
       dataArray.push(current.data);
-      delete current.label;
     });
 
     const backgroundColorsArray = repeatArray(

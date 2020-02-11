@@ -35,4 +35,15 @@ export class ContainerComponent implements OnInit {
     return gridByBreakpoint[input.alias];
   }
 
+  getDynamicRowHeight(input) {
+    const gridByBreakpoint = {
+      xl: '50%',
+      lg: '50%',
+      md: '50%',
+      sm: '50%',
+      xs: '40%',
+    };
+    return gridByBreakpoint[input.alias];
+  }
+
 }

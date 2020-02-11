@@ -1,4 +1,4 @@
-<mat-card fxFlexFill>
+<mat-card>
   <mat-card-header>
     <mat-card-title>Frequently Asked Questions</mat-card-title>
     <mat-card-subtitle>See Below</mat-card-subtitle>
@@ -7,11 +7,8 @@
     <app-faqs></app-faqs>
   </mat-card-content>
   <mat-card-actions>
-    <mat-paginator [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]" (page)="pageUpdate($event)">
+    <mat-paginator fxFlexFill [length]="100" [pageSize]="10" [pageSizeOptions]="[5, 10, 25, 100]"
+      (page)="pageUpdate($event)">
     </mat-paginator>
   </mat-card-actions>
 </mat-card>
-
-
-<div>
-</div>
