@@ -7,6 +7,10 @@
     <mat-icon fxFlex="15">question_answer</mat-icon>
     <span>FAQs</span>
   </a>
+  <a mat-list-item [routerLink]="['/birthday']" (click)="closeMenu();" aria-label="Birthday Link">
+    <mat-icon fxFlex="15">cake</mat-icon>
+    <span>Birthday Girl!</span>
+  </a>
 </mat-nav-list>
 <mat-list>
   <mat-list-item aria-label="Version Reference">

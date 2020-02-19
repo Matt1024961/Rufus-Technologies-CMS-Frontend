@@ -25,6 +25,18 @@ const routes: Routes = [{
   data: {
     title: 'FAQs'
   }
+}, {
+  path: 'birthday',
+  loadChildren: () =>
+    import('src/modules/birthday/birthday.module').then(
+      m => m.BirthdayModule
+    ),
+  canActivate: [
+    // TODO
+  ],
+  data: {
+    title: 'Dashboard'
+  }
 }];
 
 @NgModule({
