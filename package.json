@@ -1,6 +1,7 @@
 {
   "name": "boiler-plate",
   "version": "0.0.1-DEV",
+  "main": "main.js",
   "scripts": {
     "analyze": "webpack-bundle-analyzer dist/Boiler-Plate/stats-es2015.json",
     "ng": "ng",
@@ -12,6 +13,8 @@
     "test:nowatch": "ng test --watch=false",
     "lint": "ng lint",
     "e2e": "ng e2e",
+    "main": "main.js",
+    "electron": "ng build --prod --base-href . && electron .",
     "compodoc": "npx compodoc -p tsconfig.app.json"
   },
   "private": true,
@@ -51,6 +54,7 @@
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
     "codelyzer": "^5.1.2",
+    "electron": "^8.0.2",
     "jasmine-core": "~3.4.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~4.1.0",
