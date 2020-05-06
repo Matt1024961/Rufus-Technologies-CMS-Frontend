@@ -1,19 +1,34 @@
 <mat-nav-list>
-  <a mat-list-item [routerLink]="['/']" (click)="closeMenu();" aria-label="Dashboard Link">
+  <a
+    mat-list-item
+    [routerLink]="['/']"
+    (click)="closeMenu()"
+    aria-label="Dashboard Link"
+  >
     <mat-icon fxFlex="15">home</mat-icon>
     <span>Dashboard</span>
   </a>
-  <a mat-list-item [routerLink]="['/faqs']" (click)="closeMenu();" aria-label="FAQs Link">
+  <a
+    mat-list-item
+    [routerLink]="['/faqs']"
+    (click)="closeMenu()"
+    aria-label="FAQs Link"
+  >
     <mat-icon fxFlex="15">question_answer</mat-icon>
     <span>FAQs</span>
   </a>
-  <a mat-list-item [routerLink]="['/birthday']" (click)="closeMenu();" aria-label="Birthday Link">
-    <mat-icon fxFlex="15">cake</mat-icon>
-    <span>Birthday Girl!</span>
+  <a
+    mat-list-item
+    [routerLink]="['/filings']"
+    (click)="closeMenu()"
+    aria-label="Filing Link"
+  >
+    <mat-icon fxFlex="15">description</mat-icon>
+    <span>Filings</span>
   </a>
 </mat-nav-list>
 <mat-list>
   <mat-list-item aria-label="Version Reference">
-    <span>App Version: {{version}}</span>
+    <span>App Version: {{ version }}</span>
   </mat-list-item>
 </mat-list>

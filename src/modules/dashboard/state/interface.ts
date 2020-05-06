@@ -1,9 +1,12 @@
 // associated interfaces
-import { ReducerInterface as interface1 } from './bar-graph/interface';
-import { ReducerInterface as interface2 } from './pie-graph/interface';
-import { ReducerInterface as interface3 } from './line-graph/interface';
+import { ReducerInterface as interface1 } from './container/interface';
+import { ReducerInterface as interface2 } from './overview/interface';
+import { ReducerInterface as interface3 } from './newest/interface';
+import { ReducerInterface as interface4 } from './counts/interface';
+
 export interface ModuleInterface {
-  'bar-graph': interface1;
-  'pie-graph': interface2;
-  'line-graph': interface3;
+  container: interface1;
+  overview: interface2;
+  newest: interface3;
+  counts: interface4;
 }

@@ -3,25 +3,21 @@
     <mat-card-title>Example Card</mat-card-title>
     <mat-card-subtitle>Just an example...</mat-card-subtitle>
   </mat-card-header>
-  <mat-card-content fxFlex.xs="70%" fxFlex.sm="70%" fxFlex="80%" class="overflow-x-auto margin-tb-05">
-    <p *ngFor="let paragraph of randomNumber(); let i=index;">
-      <strong>{{i+1}}):</strong>
-      Lorem ipsum dolor sit amet,
-      consectetur adipiscing elit.
-      Curabitur lobortis,
-      libero at porttitor rutrum,
-      nibh arcu placerat leo,
-      et placerat nunc arcu sit amet ex.
-      Phasellus vel molestie nibh.
-      Aenean faucibus ligula nisl,
-      vitae porta tellus tincidunt non.
-      Praesent tempor consequat dui.
-      Phasellus sit amet cursus elit.
-      Nulla lobortis elit sit amet diam vulputate,
-      et luctus ligula vestibulum.
-      Vestibulum nulla nisl,
-      fermentum in lectus ut,
-      fermentum ullamcorper sapien.
+  <mat-card-content
+    fxFlex.xs="70%"
+    fxFlex.sm="70%"
+    fxFlex="80%"
+    class="overflow-x-auto margin-tb-05"
+  >
+    <p *ngFor="let paragraph of randomNumber(); let i = index">
+      <strong>{{ i + 1 }}):</strong>
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur
+      lobortis, libero at porttitor rutrum, nibh arcu placerat leo, et placerat
+      nunc arcu sit amet ex. Phasellus vel molestie nibh. Aenean faucibus ligula
+      nisl, vitae porta tellus tincidunt non. Praesent tempor consequat dui.
+      Phasellus sit amet cursus elit. Nulla lobortis elit sit amet diam
+      vulputate, et luctus ligula vestibulum. Vestibulum nulla nisl, fermentum
+      in lectus ut, fermentum ullamcorper sapien.
     </p>
   </mat-card-content>
   <mat-card-actions fxFlex.xs="15%" fxFlex.sm="15%" fxFlex="10%">

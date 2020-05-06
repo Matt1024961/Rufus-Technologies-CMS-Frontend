@@ -3,17 +3,19 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { ContainerComponent } from './components/container/container.component';
 
-const routes: Routes = [{
-  path: '',
-  component: ContainerComponent,
-  data: {
-    // TODO
-    title: 'Dashboard'
-  }
-}];
+const routes: Routes = [
+  {
+    path: '',
+    component: ContainerComponent,
+    data: {
+      // TODO
+      title: 'Dashboard',
+    },
+  },
+];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class DashboardRoutingModule { }
+export class DashboardRoutingModule {}

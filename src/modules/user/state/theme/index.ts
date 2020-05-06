@@ -4,7 +4,6 @@ import { ReducerInterface } from './interface';
 
 export function reducer(state: ReducerInterface = null, action: any) {
   switch (action.type) {
-
     case INIT: {
       return state;
     }

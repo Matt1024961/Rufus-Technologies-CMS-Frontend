@@ -24,57 +24,66 @@ import { RootComponent } from '@modules/app/components/root/root.component';
 import { BreadcrumbComponent } from '@modules/app/components/breadcrumb/breadcrumb.component';
 import { MainMenuComponent } from '@modules/app/components/main-menu/main-menu.component';
 
+import {
+  MatFormFieldDefaultOptions,
+  MAT_FORM_FIELD_DEFAULT_OPTIONS,
+} from '@angular/material/form-field';
+
+const appearance: MatFormFieldDefaultOptions = {
+  appearance: 'outline',
+};
+
 @NgModule({
-  declarations: [
-    RootComponent,
-    BreadcrumbComponent,
-    MainMenuComponent,
-  ],
+  declarations: [RootComponent, BreadcrumbComponent, MainMenuComponent],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
 
     AppRoutingModule,
 
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production }),
-
-    StoreModule.forRoot({
-      router: routerReducer
-    }, {
-      runtimeChecks: {
-      }
+    ServiceWorkerModule.register('ngsw-worker.js', {
+      enabled: environment.production,
     }),
+
+    StoreModule.forRoot(
+      {
+        router: routerReducer,
+      },
+      {
+        runtimeChecks: {},
+      }
+    ),
     StoreModule.forFeature('app', ModuleReducers),
 
     StoreRouterConnectingModule.forRoot({
       serializer: CustomRouter,
-      stateKey: 'router'
+      stateKey: 'router',
     }),
 
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       logOnly: environment.production,
-      name: 'Boiler Plate Store'
-
+      name: 'Boiler Plate Store',
     }),
 
     EffectsModule.forRoot([]),
 
     UiModule,
-    UserModule
+    UserModule,
   ],
   providers: [
     ResponsiveService,
     {
       provide: APP_INITIALIZER,
       useFactory: ResponsiveFactory,
-      deps: [
-        ResponsiveService
-      ],
-      multi: true
+      deps: [ResponsiveService],
+      multi: true,
+    },
+    {
+      provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
+      useValue: appearance,
     },
   ],
   bootstrap: [RootComponent],
-
 })
-export class AppModule { }
+export class AppModule {}

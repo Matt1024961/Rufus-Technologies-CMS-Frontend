@@ -1,14 +1,21 @@
-<ng-container *ngIf="responsiveObservable | async; let responsiveObservableAsync;">
-  <mat-grid-list #gridContainer [cols]="getDynamicColumns(responsiveObservableAsync)"
-    [rowHeight]="getDynamicRowHeight(responsiveObservableAsync)" fxFlexFill gutterSize="0">
+<ng-container
+  *ngIf="responsiveObservable | async; let responsiveObservableAsync"
+>
+  <mat-grid-list
+    #gridContainer
+    [cols]="getDynamicColumns(responsiveObservableAsync)"
+    [rowHeight]="getDynamicRowHeight(responsiveObservableAsync)"
+    fxFlexFill
+    gutterSize="0"
+  >
     <mat-grid-tile>
-      <app-bar-graph fxFlexFill class="padding-05"></app-bar-graph>
+      <app-overview fxFlexFill class="padding-05"></app-overview>
     </mat-grid-tile>
     <mat-grid-tile>
-      <app-pie-graph fxFlexFill class="padding-05"></app-pie-graph>
+      <app-counts fxFlexFill class="padding-05"></app-counts>
     </mat-grid-tile>
     <mat-grid-tile>
-      <app-line-graph fxFlexFill class="padding-05"></app-line-graph>
+      <app-newest fxFlexFill class="padding-05"></app-newest>
     </mat-grid-tile>
     <mat-grid-tile>
       <app-example fxFlexFill class="padding-05"></app-example>

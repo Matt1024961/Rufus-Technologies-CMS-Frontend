@@ -1,0 +1,88 @@
+<mat-card fxLayout="column" fxFlexFill>
+  <mat-card-header fxFlex="auto">
+    <mat-card-title>Newest Filings</mat-card-title>
+  </mat-card-header>
+  <mat-card-content fxFlex="75%" class="overflow-y-auto mb-0">
+    <ng-container
+      *ngIf="dataObservable | async as dataObservableAsync; else loading"
+    >
+      <mat-table [dataSource]="dataObservableAsync">
+        <ng-container matColumnDef="view">
+          <mat-header-cell *matHeaderCellDef></mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            <button
+              (click)="reloadContent()"
+              *ngIf="(dataObservable | async) !== null"
+              mat-mini-fab
+              color="primary"
+              aria-label="Reload this data."
+            >
+              <mat-icon aria-hidden="false">pageview</mat-icon>
+            </button>
+            <ng-container *ngIf="element.filing_inline">
+              <span class="inline" fxHide.xs fxHide.sm fxHide.md>INLINE</span>
+            </ng-container>
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="cik">
+          <mat-header-cell *matHeaderCellDef fxHide.xs fxHide.sm>
+            CIK
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element" fxHide.xs fxHide.sm>
+            {{ element.cik }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="name">
+          <mat-header-cell *matHeaderCellDef> Name </mat-header-cell>
+          <mat-cell *matCellDef="let element"> {{ element.name }} </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="publish_date">
+          <mat-header-cell *matHeaderCellDef> Publish Date </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            {{ element.publish_date }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="form_type">
+          <mat-header-cell *matHeaderCellDef> Form Type </mat-header-cell>
+          <mat-cell *matCellDef="let element">
+            {{ element.form_type }}
+          </mat-cell>
+        </ng-container>
+
+        <ng-container matColumnDef="filing_period">
+          <mat-header-cell *matHeaderCellDef fxHide.xs fxHide.sm fxHide.md>
+            Filing Period
+          </mat-header-cell>
+          <mat-cell *matCellDef="let element" fxHide.xs fxHide.sm fxHide.md>
+            {{ element.filing_period }}
+          </mat-cell>
+        </ng-container>
+
+        <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+        <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
+      </mat-table>
+    </ng-container>
+
+    <ng-template #loading>
+      <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+        <h5>Loading.</h5>
+        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+      </div>
+    </ng-template>
+  </mat-card-content>
+  <mat-card-actions fxFlex="auto" fxLayoutAlign="end center">
+    <button
+      (click)="reloadContent()"
+      *ngIf="(dataObservable | async) !== null"
+      mat-mini-fab
+      color="primary"
+      aria-label="Reload this data."
+    >
+      <mat-icon aria-hidden="false">autorenew</mat-icon>
+    </button>
+  </mat-card-actions>
+</mat-card>

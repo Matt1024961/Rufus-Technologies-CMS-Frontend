@@ -11,12 +11,8 @@ describe('ExampleComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [ExampleComponent],
-      imports: [
-        BrowserAnimationsModule,
-        UiModule,
-      ],
-    })
-      .compileComponents();
+      imports: [BrowserAnimationsModule, UiModule],
+    }).compileComponents();
   }));
 
   beforeEach(() => {

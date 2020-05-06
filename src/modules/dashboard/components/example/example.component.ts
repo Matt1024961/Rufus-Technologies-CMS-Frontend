@@ -4,14 +4,12 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
   selector: 'app-example',
   templateUrl: './example.component.html',
   styleUrls: ['./example.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ExampleComponent implements OnInit {
+  constructor() {}
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   randomNumber() {
     const min = 5;
@@ -19,5 +17,4 @@ export class ExampleComponent implements OnInit {
     const random = Math.floor(Math.random() * (max - min + 1)) + min;
     return Array(random);
   }
-
 }
