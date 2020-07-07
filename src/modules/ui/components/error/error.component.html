@@ -1,0 +1,23 @@
+<mat-card fxFlexFill>
+  <mat-card-header>
+    <mat-card-title>An Error has Occured</mat-card-title>
+    <mat-card-subtitle>See Below for additional information.</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content
+    fxLayout="column"
+    fxFlexFill
+    fxLayoutAlign="center center"
+    class="mat-typography"
+  >
+    <h3>
+      {{ error.message }}
+    </h3>
+    <p>
+      We apologize for this inconvenience.
+    </p>
+    <p>
+      Please <a href="#">Contact Us</a> to let us know you have encountered this
+      issue.
+    </p>
+  </mat-card-content>
+</mat-card>

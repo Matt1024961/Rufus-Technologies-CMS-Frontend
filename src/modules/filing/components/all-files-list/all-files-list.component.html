@@ -1,0 +1,18 @@
+<section class="mat-typography overflow-y-auto" fxFlexFill xLayout="row">
+  <mat-nav-list fxLayout="column">
+    <a
+      *ngFor="let html of currentRowData.external.html_files"
+      [routerLink]="'/filings/view/' + currentRowData.id"
+      [queryParams]="{ file: html.file }"
+      role="listitem"
+      mat-list-item
+      fxFlexFill
+      color="primary"
+      aria-label="See this specific file."
+      matTooltip="See this specific file."
+    >
+      <h3 matLine>{{ html.title }}</h3>
+      <mat-divider></mat-divider>
+    </a>
+  </mat-nav-list>
+</section>

@@ -7,4 +7,6 @@ export const UPDATE = '(AUTO) UPDATE Filing Datatable Options';
 
 export const CLEAR = '(AUTO) CLEAR Filing Datatable Options';
 
+export const ERROR = '(AUTO) ERROR Filing Datatable Data';
+
 export const STORE = '(AUTO) STORE Filing Datatable Data';

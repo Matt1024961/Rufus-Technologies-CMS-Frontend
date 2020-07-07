@@ -1,4 +1,4 @@
-import { INIT, UPDATE, CLEAR, STORE } from './actions';
+import { INIT, UPDATE, CLEAR, ERROR, STORE } from './actions';
 
 import { ReducerInterface } from './interface';
 
@@ -20,6 +20,9 @@ export function reducer(state: ReducerInterface = null, action: any) {
       }
     }
 
+    case ERROR: {
+      return Object.assign({}, action.result);
+    }
     case CLEAR: {
       state = null;
       return state;

@@ -1,0 +1,145 @@
+<ng-container *ngIf="dataObservable | async as dataObservableAsync">
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    aria-label="Example icon-button with a menu"
+  >
+    <mat-icon
+      matBadge="{{ getLength(dataObservableAsync) }}"
+      matBadgeColor="warn"
+      >more_vert</mat-icon
+    >
+  </button>
+  <mat-menu #menu="matMenu" class="mat-typography">
+    <h3 fxLayoutAlign="center center">Click to Reset or Remove</h3>
+    <ng-container *ngFor="let current of dataObservableAsync | keyvalue">
+      <ng-container [ngSwitch]="current['key']">
+        <ng-container *ngSwitchCase="'page_index'">
+          <button
+            mat-menu-item
+            (click)="resetFilter($event, current, dataObservableAsync)"
+          >
+            <mat-icon matTooltip="Click to set to Current Page: 1"
+              >autorenew</mat-icon
+            >
+            <span>Current Page: {{ current['value'] }}</span>
+          </button></ng-container
+        >
+        <ng-container *ngSwitchCase="'page_size'">
+          <button
+            mat-menu-item
+            (click)="resetFilter($event, current, dataObservableAsync)"
+          >
+            <mat-icon matTooltip="Click to set to Total Records Per Page: 25"
+              >autorenew</mat-icon
+            >
+            <span>Total Records per page: {{ current['value'] }}</span>
+          </button></ng-container
+        >
+        <ng-container *ngSwitchCase="'filter'">
+          <button
+            *ngIf="current['value']"
+            mat-menu-item
+            (click)="removeFilter($event, current, dataObservableAsync)"
+          >
+            <mat-icon matTooltip="Click to remove current Filter"
+              >delete</mat-icon
+            >
+            <span>Current Filter: {{ current['value'] }}</span>
+          </button></ng-container
+        >
+        <ng-container *ngSwitchCase="'filing_inline'">
+          <button
+            *ngIf="current['value'] !== null"
+            mat-menu-item
+            (click)="removeFilter($event, current, dataObservableAsync)"
+          >
+            <mat-icon matTooltip="Click to Show All Filings">delete</mat-icon>
+            <span *ngIf="current['value'] === true"
+              >Only showing Inline Filings</span
+            >
+            <span *ngIf="current['value'] === false"
+              >Only showing NON Inline Filings</span
+            >
+          </button></ng-container
+        >
+        <ng-container *ngSwitchCase="'parsing_accomplished'">
+          <button
+            *ngIf="current['value'] !== null"
+            mat-menu-item
+            (click)="removeFilter($event, current, dataObservableAsync)"
+          >
+            <mat-icon matTooltip="Click to show all Filings">delete</mat-icon>
+            <span *ngIf="current['value'] === true"
+              >Only showing Viewable Filings</span
+            >
+            <span *ngIf="current['value'] === false"
+              >Only showing NON Viewable Filings</span
+            >
+          </button></ng-container
+        >
+        <ng-container *ngSwitchCase="'order'">
+          <button
+            *ngIf="current['value']"
+            mat-menu-item
+            (click)="resetFilter($event, current, dataObservableAsync)"
+          >
+            <mat-icon matTooltip="Click to set to Order: NAME"
+              >autorenew</mat-icon
+            >
+            <span>Order: {{ current['value'] | uppercase }}</span>
+          </button></ng-container
+        >
+        <ng-container *ngSwitchCase="'order_direction'">
+          <button
+            *ngIf="current['value']"
+            mat-menu-item
+            (click)="resetFilter($event, current, dataObservableAsync)"
+          >
+            <mat-icon matTooltip="Click to set to Order Direction: ASC"
+              >autorenew</mat-icon
+            >
+            <span>Order Direction: {{ current['value'] | uppercase }}</span>
+          </button></ng-container
+        >
+        <ng-container *ngSwitchCase="'cik'">
+          <button
+            *ngIf="current['value']"
+            mat-menu-item
+            (click)="removeFilter($event, current, dataObservableAsync)"
+          >
+            <mat-icon matTooltip="Click to show all CIKs">delete</mat-icon>
+            <span>Current CIK: {{ current['value'] }}</span>
+          </button></ng-container
+        >
+
+        <ng-container *ngSwitchCase="'form_type'">
+          <button
+            *ngIf="current['value']"
+            mat-menu-item
+            (click)="removeFilter($event, current, dataObservableAsync)"
+          >
+            <mat-icon matTooltip="Click to show all Form Types"
+              >delete</mat-icon
+            >
+            <span>Current Form Type: {{ current['value'] }}</span>
+          </button></ng-container
+        >
+
+        <ng-container *ngSwitchCase="'filing_period'">
+          <button
+            *ngIf="current['value']"
+            mat-menu-item
+            (click)="removeFilter($event, current, dataObservableAsync)"
+          >
+            <mat-icon matTooltip="Click to show all Filing Periods"
+              >delete</mat-icon
+            >
+            <span>Current Filing Period: {{ current['value'] }}</span>
+          </button></ng-container
+        >
+        <ng-container *ngSwitchDefault></ng-container>
+      </ng-container>
+    </ng-container>
+  </mat-menu>
+</ng-container>

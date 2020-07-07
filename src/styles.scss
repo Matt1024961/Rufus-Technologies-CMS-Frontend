@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
-$material-icons-font-path: "~material-icons/iconfont/";
-@import "~material-icons/iconfont/material-icons.scss";
+$material-icons-font-path: '~material-icons/iconfont/';
+@import '~material-icons/iconfont/material-icons.scss';
 
 html,
 body {
@@ -10,7 +10,7 @@ body {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: Roboto, 'Helvetica Neue', sans-serif;
   //overflow: hidden;
 }
 
@@ -64,6 +64,9 @@ body {
   overflow-y: auto;
 }
 
+.text-align-center {
+  text-align: center;
+}
 // $font-20px: 20px; // 5
 // $font-24px: 24px; // 6
 // $font-12px: 12px; // 3

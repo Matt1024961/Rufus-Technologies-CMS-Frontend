@@ -1,14 +1,26 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { mergeMap, map, concatMap, withLatestFrom } from 'rxjs/operators';
+import {
+  map,
+  concatMap,
+  withLatestFrom,
+  switchMap,
+  catchError,
+} from 'rxjs/operators';
 
 import {
   INIT,
   ADDITIONAL_VIEW,
   UPDATE,
   CLEAR,
+  ERROR,
   STORE,
 } from '@modules/filing/state/datatable/actions';
+
+import {
+  INIT as INIT_FILTERS,
+  CLEAR as CLEAR_FILTERS,
+} from '@modules/filing/state/datatable-filters/actions';
 
 import { RestfulService } from '@modules/filing/services/restful/restful.service';
 import { concat, of } from 'rxjs';
@@ -26,11 +38,14 @@ export class Effects {
   @Effect({ dispatch: true })
   initAction = this.actions.pipe(
     ofType(INIT),
-    mergeMap((action: any) =>
-      this.restfulService.getDatatable(action.result).pipe(
+    switchMap((action: any) => {
+      return this.restfulService.getDatatable(action.result).pipe(
         map((results: any) => {
-          console.log(results);
           results.data.forEach((current) => {
+            current.external.html_files = JSON.parse(
+              current.external.html_files
+            );
+            current.external.xml_files = JSON.parse(current.external.xml_files);
             if (!current.hasOwnProperty('additional_view')) {
               current.additional_view = false;
             }
@@ -40,8 +55,11 @@ export class Effects {
             result: results,
           };
         })
-      )
-    )
+      );
+    }),
+    catchError((error) => {
+      return of({ type: ERROR, result: { type: 'ERROR', message: error } });
+    })
   );
 
   @Effect({ dispatch: true })
@@ -76,6 +94,7 @@ export class Effects {
     concatMap((action) => {
       return concat(
         of({ type: CLEAR }),
+        of({ type: INIT_FILTERS, result: action['result'] }),
         of({ type: INIT, result: action['result'] })
       );
     })

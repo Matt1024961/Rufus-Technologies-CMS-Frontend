@@ -19,7 +19,7 @@ export class CustomRouter implements RouterStateSerializer<RouterStateUrl> {
     title = title || 'UNKNOWN';
     const {
       url,
-      root: { queryParams }
+      root: { queryParams },
     } = routerState;
     const { params } = route;
 

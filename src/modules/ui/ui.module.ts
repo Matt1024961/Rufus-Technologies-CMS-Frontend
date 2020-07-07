@@ -34,8 +34,12 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { MatSortModule } from '@angular/material/sort';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import { MatBadgeModule } from '@angular/material/badge';
+
+import { LoadingComponent } from './components/loading/loading.component';
+import { ErrorComponent } from './components/error/error.component';
 @NgModule({
-  declarations: [],
+  declarations: [LoadingComponent, ErrorComponent],
   imports: [
     CommonModule,
     // BrowserAnimationsModule,
@@ -70,7 +74,8 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatBadgeModule,
   ],
   exports: [
     // BrowserAnimationsModule,
@@ -105,7 +110,10 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatSnackBarModule,
     MatTableModule,
     MatSortModule,
-    MatPaginatorModule
-  ]
+    MatPaginatorModule,
+    MatBadgeModule,
+    LoadingComponent,
+    ErrorComponent,
+  ],
 })
-export class UiModule { }
+export class UiModule {}

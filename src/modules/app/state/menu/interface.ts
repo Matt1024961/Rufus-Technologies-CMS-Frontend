@@ -1,4 +1,4 @@
 export interface ReducerInterface {
-  mainMenu: boolean;
-  userMenu: boolean;
+  main_menu: boolean;
+  user_menu: boolean;
 }

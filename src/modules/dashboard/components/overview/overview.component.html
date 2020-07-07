@@ -1,43 +1,49 @@
-<mat-card fxLayout="column" fxFlexFill>
-  <mat-card-header fxFlex="auto">
-    <mat-card-title>Filing Overview</mat-card-title>
-    <!-- <mat-card-subtitle>Click On a bar to see more.</mat-card-subtitle> -->
-  </mat-card-header>
-  <mat-card-content fxFlex="75%" class="overflow-y-hide mb-0">
-    <ng-container *ngIf="(chartObservable | async) === null">
-      <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
-        <h5>Loading.</h5>
-        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-      </div>
-    </ng-container>
-
-    <div #graphParent fxFlexFill fxLayoutAlign="center center">
-      <div fxLayout="column" fxFlexFill>
-        <div fxFlex="100" fxFlexFill>
-          <canvas #graphCanvas></canvas>
+<ng-container
+  *ngIf="chartObservable | async as chartObservableAsync; else loading"
+>
+  <mat-card
+    *ngIf="chartObservableAsync['type'] !== 'ERROR'"
+    fxLayout="column"
+    fxFlexFill
+  >
+    <mat-card-header fxFlex="auto">
+      <mat-card-title>Filing Overview</mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxFlex="75%" class="overflow-y-hide mb-0">
+      <div #graphParent fxFlexFill fxLayoutAlign="center center">
+        <div fxLayout="column" fxFlexFill>
+          <div fxFlex="100" fxFlexFill>
+            <canvas #graphCanvas></canvas>
+          </div>
         </div>
       </div>
-    </div>
-  </mat-card-content>
-  <mat-card-actions fxFlex="auto" fxLayoutAlign="end center">
-    <button
-      (click)="previousState()"
-      *ngIf="(chartObservable | async) !== null && chartUserState !== -1"
-      mat-mini-fab
-      color="primary"
-      aria-label="Go back to previous state."
-    >
-      <mat-icon aria-hidden="false">undo</mat-icon>
-    </button>
+    </mat-card-content>
+    <mat-card-actions fxFlex="auto" fxLayoutAlign="end center">
+      <button
+        (click)="previousState()"
+        *ngIf="(chartObservable | async) !== null && chartUserState !== -1"
+        mat-mini-fab
+        color="primary"
+        aria-label="Go back to previous state."
+      >
+        <mat-icon aria-hidden="false">undo</mat-icon>
+      </button>
 
-    <button
-      (click)="reloadContent()"
-      *ngIf="(chartObservable | async) !== null"
-      mat-mini-fab
-      color="primary"
-      aria-label="Reload this data."
-    >
-      <mat-icon aria-hidden="false">autorenew</mat-icon>
-    </button>
-  </mat-card-actions>
-</mat-card>
+      <button
+        (click)="reloadContent()"
+        *ngIf="(chartObservable | async) !== null"
+        mat-mini-fab
+        color="primary"
+        aria-label="Reload this data."
+      >
+        <mat-icon aria-hidden="false">autorenew</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <ng-container *ngIf="chartObservableAsync['type'] === 'ERROR'">
+    <app-error [error]="chartObservableAsync"></app-error>
+  </ng-container>
+</ng-container>
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

@@ -1,0 +1,16 @@
+<section fxFlexFill class="mat-typography">
+  <ng-container *ngIf="isEmptyObject(currentRowData.fact_overview)">
+    <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
+      <h3>
+        This information is not yet available. Please check back again later.
+      </h3>
+    </div>
+  </ng-container>
+  <div #graphParent fxFlexFill data-test="true">
+    <div fxLayout="column" fxFlexFill>
+      <div fxFlex="100" fxFlexFill>
+        <canvas #graphCanvas></canvas>
+      </div>
+    </div>
+  </div>
+</section>

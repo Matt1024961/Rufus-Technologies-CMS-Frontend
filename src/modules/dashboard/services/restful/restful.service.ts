@@ -1,7 +1,11 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Observable, Observer } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import {
+  HttpClient,
+  HttpParams,
+  HttpErrorResponse,
+} from '@angular/common/http';
+import { Observable, Observer, throwError } from 'rxjs';
+import { delay, catchError } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root',
@@ -9,8 +13,22 @@ import { delay } from 'rxjs/operators';
 export class RestfulService {
   constructor(private httpClient: HttpClient) {}
 
+  handleError(error: HttpErrorResponse) {
+    let errorMessage;
+    if (error.error instanceof ErrorEvent) {
+      // Client-side errors
+      errorMessage = `${error.message}`;
+    } else {
+      // Server-side errors
+      errorMessage = `${error.message}`;
+    }
+    return throwError(errorMessage);
+  }
+
   getContainer() {
-    return this.httpClient.get(`http://localhost:8080/api/dashboard`);
+    return this.httpClient
+      .get(`http://localhost:8080/api/dashboard`)
+      .pipe(catchError(this.handleError));
   }
 
   getOverview(additionalParams = {}) {

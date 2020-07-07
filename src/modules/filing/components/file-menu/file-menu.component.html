@@ -1,0 +1,33 @@
+<ng-container *ngIf="dataObservable | async as dataObservableAsync">
+  <button
+    mat-icon-button
+    [matMenuTriggerFor]="menu"
+    aria-label="Example icon-button with a menu"
+  >
+    <mat-icon
+      matBadge="{{ dataObservableAsync.html_files.length }}"
+      color="primary"
+      >more_vert</mat-icon
+    >
+  </button>
+
+  <mat-menu #menu="matMenu">
+    <ng-container
+      *ngFor="
+        let currentFile of dataObservableAsync['html_files'];
+        let index = index
+      "
+    >
+      <a
+        mat-menu-item
+        [routerLink]="'/filings/view/' + currentParams.id"
+        [queryParams]="{ file: currentFile.file }"
+      >
+        <mat-icon *ngIf="currentParams.file !== currentFile.file"
+          >link</mat-icon
+        >
+        <span>{{ currentFile.title }}</span>
+      </a>
+    </ng-container>
+  </mat-menu>
+</ng-container>

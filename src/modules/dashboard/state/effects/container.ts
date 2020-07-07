@@ -1,13 +1,28 @@
 import { Injectable } from '@angular/core';
 import { Actions, Effect, ofType } from '@ngrx/effects';
-import { mergeMap, map, concatMap } from 'rxjs/operators';
+import {
+  mergeMap,
+  map,
+  concatMap,
+  switchMap,
+  catchError,
+} from 'rxjs/operators';
 
 import { INIT } from '@modules/dashboard/state/container/actions';
 
-import { STORE as STORE_OVERVIEW } from '@modules/dashboard/state/overview/actions';
-import { STORE as STORE_COUNTS } from '@modules/dashboard/state/counts/actions';
+import {
+  STORE as STORE_OVERVIEW,
+  ERROR as ERROR_OVERVIEW,
+} from '@modules/dashboard/state/overview/actions';
+import {
+  STORE as STORE_COUNTS,
+  ERROR as ERROR_COUNTS,
+} from '@modules/dashboard/state/counts/actions';
 
-import { STORE as STORE_NEWEST } from '@modules/dashboard/state/newest/actions';
+import {
+  STORE as STORE_NEWEST,
+  ERROR as ERROR_NEWEST,
+} from '@modules/dashboard/state/newest/actions';
 
 // import { STORE_COUNTS } from "@modules/dashboard/state/counts/actions";
 // import { STORE_NEWEST } from "@modules/dashboard/state/newest/actions";
@@ -25,7 +40,7 @@ export class Effects {
   @Effect({ dispatch: true })
   initAction = this.actions.pipe(
     ofType(INIT),
-    mergeMap((action: any) =>
+    switchMap((action: any) =>
       this.restfulService.getContainer().pipe(
         concatMap((results: any) => {
           const overview = results.overview;
@@ -39,6 +54,14 @@ export class Effects {
           );
         })
       )
-    )
+    ),
+    catchError((error) => {
+      console.log(error);
+      return concat(
+        of({ type: ERROR_OVERVIEW, result: { type: 'ERROR', message: error } }),
+        of({ type: ERROR_COUNTS, result: { type: 'ERROR', message: error } }),
+        of({ type: ERROR_NEWEST, result: { type: 'ERROR', message: error } })
+      );
+    })
   );
 }

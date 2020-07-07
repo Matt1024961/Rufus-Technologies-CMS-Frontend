@@ -1,5 +1,5 @@
 export interface ReducerInterface {
-  mediaQuery: string;
+  media_query: string;
   alias: string;
   suffix: string;
 }

@@ -1,11 +1,15 @@
-<mat-card fxLayout="column" fxFlexFill>
-  <mat-card-header fxFlex="auto">
-    <mat-card-title>Newest Filings</mat-card-title>
-  </mat-card-header>
-  <mat-card-content fxFlex="75%" class="overflow-y-auto mb-0">
-    <ng-container
-      *ngIf="dataObservable | async as dataObservableAsync; else loading"
-    >
+<ng-container
+  *ngIf="dataObservable | async as dataObservableAsync; else loading"
+>
+  <mat-card
+    *ngIf="dataObservableAsync['type'] !== 'ERROR'"
+    fxLayout="column"
+    fxFlexFill
+  >
+    <mat-card-header fxFlex="auto">
+      <mat-card-title>Newest Filings</mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxFlex="75%" class="overflow-y-auto mb-0">
       <mat-table [dataSource]="dataObservableAsync">
         <ng-container matColumnDef="view">
           <mat-header-cell *matHeaderCellDef></mat-header-cell>
@@ -65,24 +69,23 @@
         <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
         <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
       </mat-table>
-    </ng-container>
-
-    <ng-template #loading>
-      <div fxLayout="column" fxLayoutAlign="center center" fxFlexFill>
-        <h5>Loading.</h5>
-        <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-      </div>
-    </ng-template>
-  </mat-card-content>
-  <mat-card-actions fxFlex="auto" fxLayoutAlign="end center">
-    <button
-      (click)="reloadContent()"
-      *ngIf="(dataObservable | async) !== null"
-      mat-mini-fab
-      color="primary"
-      aria-label="Reload this data."
-    >
-      <mat-icon aria-hidden="false">autorenew</mat-icon>
-    </button>
-  </mat-card-actions>
-</mat-card>
+    </mat-card-content>
+    <mat-card-actions fxFlex="auto" fxLayoutAlign="end center">
+      <button
+        (click)="reloadContent()"
+        *ngIf="(dataObservable | async) !== null"
+        mat-mini-fab
+        color="primary"
+        aria-label="Reload this data."
+      >
+        <mat-icon aria-hidden="false">autorenew</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <ng-container *ngIf="dataObservableAsync['type'] === 'ERROR'">
+    <app-error [error]="dataObservableAsync"></app-error>
+  </ng-container>
+</ng-container>
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

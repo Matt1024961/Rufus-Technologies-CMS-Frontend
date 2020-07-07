@@ -1,9 +1,6 @@
 import { Effects as effect1 } from './datatable';
-// import { Effects as effect2 } from './pie-graph';
-// import { Effects as effect3 } from './line-graph';
+import { Effects as effect2 } from './datatable-filters';
+import { Effects as effect3 } from './view';
 
-export const ModuleEffects = [
-  effect1,
-  // effect2,
-  // effect3
-];
+import { Effects as effect5 } from './files';
+export const ModuleEffects = [effect1, effect2, effect3, effect5];

@@ -50,7 +50,13 @@ const appearance: MatFormFieldDefaultOptions = {
         router: routerReducer,
       },
       {
-        runtimeChecks: {},
+        runtimeChecks: {
+          strictStateImmutability: false,
+          strictActionImmutability: false,
+          strictStateSerializability: true,
+          strictActionSerializability: true,
+          strictActionWithinNgZone: true,
+        },
       }
     ),
     StoreModule.forFeature('app', ModuleReducers),

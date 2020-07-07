@@ -1,0 +1,421 @@
+<ng-container
+  *ngIf="dataObservable | async as dataObservableAsync; else loading"
+>
+  <mat-card
+    *ngIf="dataObservableAsync['type'] !== 'ERROR'"
+    fxLayout="column"
+    fxFlexFill
+  >
+    <mat-card-header fxFlex="auto">
+      <mat-card-title>
+        {{ dataObservableAsync.data[0].title }}
+        <app-file-menu></app-file-menu>
+      </mat-card-title>
+    </mat-card-header>
+    <mat-card-content
+      fxFlex="auto"
+      class="overflow-y-auto overflow-x-hidden mb-0"
+    >
+      <form [formGroup]="searchForm" fxLayout="row" fxFlexAlign="center center">
+        <mat-form-field fxLayout="column" fxFlexFill>
+          <mat-label>Filter this Filing</mat-label>
+          <input matInput formControlName="filter" />
+          <mat-hint>As you type, this data will change.</mat-hint>
+        </mat-form-field>
+      </form>
+
+      <div class="page-begin">
+        <span class="mat-body-strong">Filing Begins Below</span>
+      </div>
+
+      <ng-container
+        *ngFor="
+          let currentPage of dataObservableAsync['data'];
+          let index = index
+        "
+      >
+        <ng-container
+          *ngTemplateOutlet="
+            recursiveList;
+            context: { $implicit: currentPage.content }
+          "
+        ></ng-container>
+
+        <ng-template #recursiveList let-json>
+          <ng-container [ngSwitch]="json.tagName">
+            <section
+              *ngSwitchCase="'pagination'"
+              [attr.data-page-number]="getPageAttribute(json.attributes)"
+              class="mat-typography"
+            >
+              <ng-container *ngIf="json.children">
+                <ng-container
+                  *ngFor="let currentJson of json.children; let index = index"
+                >
+                  <ng-container
+                    *ngTemplateOutlet="
+                      recursiveList;
+                      context: { $implicit: currentJson }
+                    "
+                  ></ng-container
+                ></ng-container>
+              </ng-container>
+            </section>
+
+            <div
+              *ngSwitchCase="'div'"
+              [ngStyle]="getStyleAttribute(json.attributes)"
+            >
+              <ng-container *ngIf="json.children">
+                <ng-container
+                  *ngFor="let currentJson of json.children; let index = index"
+                >
+                  <ng-container
+                    *ngTemplateOutlet="
+                      recursiveList;
+                      context: { $implicit: currentJson }
+                    "
+                  ></ng-container
+                ></ng-container>
+              </ng-container>
+            </div>
+
+            <h5
+              *ngSwitchCase="'h5'"
+              [ngStyle]="getStyleAttribute(json.attributes)"
+            >
+              <ng-container *ngIf="json.children">
+                <ng-container
+                  *ngFor="let currentJson of json.children; let index = index"
+                >
+                  <ng-container
+                    *ngTemplateOutlet="
+                      recursiveList;
+                      context: { $implicit: currentJson }
+                    "
+                  ></ng-container
+                ></ng-container>
+              </ng-container>
+            </h5>
+
+            <p
+              *ngSwitchCase="'p'"
+              [ngStyle]="getStyleAttribute(json.attributes)"
+            >
+              <ng-container *ngIf="json.children">
+                <ng-container
+                  *ngFor="let currentJson of json.children; let index = index"
+                >
+                  <ng-container
+                    *ngTemplateOutlet="
+                      recursiveList;
+                      context: { $implicit: currentJson }
+                    "
+                  ></ng-container
+                ></ng-container>
+              </ng-container>
+            </p>
+
+            <b
+              *ngSwitchCase="'b'"
+              [ngStyle]="getStyleAttribute(json.attributes)"
+            >
+              <ng-container *ngIf="json.children">
+                <ng-container
+                  *ngFor="let currentJson of json.children; let index = index"
+                >
+                  <ng-container
+                    *ngTemplateOutlet="
+                      recursiveList;
+                      context: { $implicit: currentJson }
+                    "
+                  ></ng-container
+                ></ng-container>
+              </ng-container>
+            </b>
+
+            <kbd
+              *ngSwitchCase="'kbd'"
+              [ngStyle]="getStyleAttribute(json.attributes)"
+            >
+              <ng-container *ngIf="json.children">
+                <ng-container
+                  *ngFor="let currentJson of json.children; let index = index"
+                >
+                  <ng-container
+                    *ngTemplateOutlet="
+                      recursiveList;
+                      context: { $implicit: currentJson }
+                    "
+                  ></ng-container
+                ></ng-container>
+              </ng-container>
+            </kbd>
+
+            <center
+              *ngSwitchCase="'center'"
+              [ngStyle]="getStyleAttribute(json.attributes)"
+            >
+              <ng-container *ngIf="json.children">
+                <ng-container
+                  *ngFor="let currentJson of json.children; let index = index"
+                >
+                  <ng-container
+                    *ngTemplateOutlet="
+                      recursiveList;
+                      context: { $implicit: currentJson }
+                    "
+                  ></ng-container
+                ></ng-container>
+              </ng-container>
+            </center>
+            <i
+              *ngSwitchCase="'i'"
+              [ngStyle]="getStyleAttribute(json.attributes)"
+            >
+              <ng-container *ngIf="json.children">
+                <ng-container
+                  *ngFor="let currentJson of json.children; let index = index"
+                >
+                  <ng-container
+                    *ngTemplateOutlet="
+                      recursiveList;
+                      context: { $implicit: currentJson }
+                    "
+                  ></ng-container
+                ></ng-container>
+              </ng-container>
+            </i>
+
+            <u
+              *ngSwitchCase="'u'"
+              [ngStyle]="getStyleAttribute(json.attributes)"
+            >
+              <ng-container *ngIf="json.children">
+                <ng-container
+                  *ngFor="let currentJson of json.children; let index = index"
+                >
+                  <ng-container
+                    *ngTemplateOutlet="
+                      recursiveList;
+                      context: { $implicit: currentJson }
+                    "
+                  ></ng-container
+                ></ng-container>
+              </ng-container>
+            </u>
+
+            <sup
+              *ngSwitchCase="'sup'"
+              [ngStyle]="getStyleAttribute(json.attributes)"
+            >
+              <ng-container *ngIf="json.children">
+                <ng-container
+                  *ngFor="let currentJson of json.children; let index = index"
+                >
+                  <ng-container
+                    *ngTemplateOutlet="
+                      recursiveList;
+                      context: { $implicit: currentJson }
+                    "
+                  ></ng-container
+                ></ng-container>
+              </ng-container>
+            </sup>
+
+            <table
+              *ngSwitchCase="'table'"
+              [ngStyle]="getStyleAttribute(json.attributes)"
+            >
+              <ng-container *ngIf="json.children">
+                <ng-container
+                  *ngFor="let currentJson of json.children; let index = index"
+                >
+                  <ng-container
+                    *ngTemplateOutlet="
+                      recursiveList;
+                      context: { $implicit: currentJson }
+                    "
+                  ></ng-container
+                ></ng-container>
+              </ng-container>
+            </table>
+
+            <tbody
+              *ngSwitchCase="'tbody'"
+              [ngStyle]="getStyleAttribute(json.attributes)"
+            >
+              <ng-container *ngIf="json.children">
+                <ng-container
+                  *ngFor="let currentJson of json.children; let index = index"
+                >
+                  <ng-container
+                    *ngTemplateOutlet="
+                      recursiveList;
+                      context: { $implicit: currentJson }
+                    "
+                  ></ng-container
+                ></ng-container>
+              </ng-container>
+            </tbody>
+
+            <tr
+              *ngSwitchCase="'tr'"
+              [ngStyle]="getStyleAttribute(json.attributes)"
+            >
+              <ng-container *ngIf="json.children">
+                <ng-container
+                  *ngFor="let currentJson of json.children; let index = index"
+                >
+                  <ng-container
+                    *ngTemplateOutlet="
+                      recursiveList;
+                      context: { $implicit: currentJson }
+                    "
+                  ></ng-container
+                ></ng-container>
+              </ng-container>
+            </tr>
+
+            <td
+              *ngSwitchCase="'td'"
+              [ngStyle]="getStyleAttribute(json.attributes)"
+              [attr.colspan]="getColspanAttribute(json.attributes)"
+            >
+              <ng-container *ngIf="json.children">
+                <ng-container
+                  *ngFor="let currentJson of json.children; let index = index"
+                >
+                  <ng-container
+                    *ngTemplateOutlet="
+                      recursiveList;
+                      context: { $implicit: currentJson }
+                    "
+                  ></ng-container
+                ></ng-container>
+              </ng-container>
+            </td>
+
+            <hr
+              *ngSwitchCase="'hr'"
+              [ngStyle]="getStyleAttribute(json.attributes)"
+            />
+            <br
+              *ngSwitchCase="'br'"
+              [ngStyle]="getStyleAttribute(json.attributes)"
+            />
+            <span
+              *ngSwitchCase="'span'"
+              [ngStyle]="getStyleAttribute(json.attributes)"
+            >
+              <ng-container *ngIf="json.children">
+                <ng-container
+                  *ngFor="let currentJson of json.children; let index = index"
+                >
+                  <ng-container
+                    *ngTemplateOutlet="
+                      recursiveList;
+                      context: { $implicit: currentJson }
+                    "
+                  ></ng-container
+                ></ng-container>
+              </ng-container>
+            </span>
+
+            <a
+              *ngSwitchCase="'a'"
+              [ngStyle]="getStyleAttribute(json.attributes)"
+              mat-button
+              color="primary"
+              (click)="getClickAction(json.attributes)"
+              target="_blank"
+            >
+              <ng-container *ngIf="json.children">
+                <ng-container
+                  *ngFor="let currentJson of json.children; let index = index"
+                >
+                  <ng-container
+                    *ngTemplateOutlet="
+                      recursiveList;
+                      context: { $implicit: currentJson }
+                    "
+                  ></ng-container
+                ></ng-container>
+              </ng-container>
+            </a>
+
+            <a
+              *ngSwitchCase="'anchor'"
+              [ngStyle]="getStyleAttribute(json.attributes)"
+              [attr.name]="getNameAttribute(json.attributes)"
+            >
+              <ng-container *ngIf="json.children">
+                <ng-container
+                  *ngFor="let currentJson of json.children; let index = index"
+                >
+                  <ng-container
+                    *ngTemplateOutlet="
+                      recursiveList;
+                      context: { $implicit: currentJson }
+                    "
+                  ></ng-container
+                ></ng-container>
+              </ng-container>
+            </a>
+
+            <span
+              *ngIf="json.type === 'text'"
+              innerHTML="{{ json.content }}"
+            ></span>
+
+            <img
+              *ngSwitchCase="'img'"
+              [ngStyle]="getStyleAttribute(json.attributes)"
+              [attr.width]="getWidthAttribute(json.attributes)"
+              [attr.height]="getHeightAttribute(json.attributes)"
+              [src]="getSrcAttribute(json.attributes)"
+            />
+
+            <ng-container *ngSwitchDefault>
+              <h1
+                *ngIf="json.tagName"
+                style="color: yellow; background-color: orange;"
+              >
+                '{{ json.tagName }}' was missed, make this!
+              </h1>
+            </ng-container>
+          </ng-container>
+        </ng-template>
+        <div class="page-begin">
+          <span class="mat-body-strong">Page Break</span>
+        </div>
+      </ng-container>
+    </mat-card-content>
+    <mat-card-actions fxFlex="auto" fxLayoutAlign="end center">
+      <mat-paginator
+        [length]="dataObservableAsync.total"
+        [pageSize]="userOptions.page_size"
+        [pageIndex]="userOptions.page_index - 1"
+        [pageSizeOptions]="pageSizeOptions"
+        [showFirstLastButtons]="true"
+        (page)="pageEvent = $event; onPaginateChange($event)"
+      >
+      </mat-paginator>
+      <button
+        (click)="reloadContent()"
+        *ngIf="(dataObservable | async) !== null"
+        mat-mini-fab
+        color="primary"
+        aria-label="Reload this data."
+      >
+        <mat-icon aria-hidden="false">autorenew</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+  <ng-container *ngIf="dataObservableAsync['type'] === 'ERROR'">
+    <app-error [error]="dataObservableAsync"></app-error>
+  </ng-container>
+</ng-container>
+<ng-template #loading>
+  <app-loading></app-loading>
+</ng-template>

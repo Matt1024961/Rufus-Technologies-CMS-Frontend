@@ -1,5 +1,13 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
+import {
+  HttpClient,
+  HttpParams,
+  HttpErrorResponse,
+  HttpResponse,
+} from '@angular/common/http';
+
+import { catchError } from 'rxjs/operators';
+import { throwError, Observable, EMPTY, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -7,15 +15,27 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 export class RestfulService {
   constructor(private httpClient: HttpClient) {}
 
+  handleError(error: HttpErrorResponse) {
+    let errorMessage;
+    if (error.error instanceof ErrorEvent) {
+      // Client-side errors
+      errorMessage = `${error.message}`;
+    } else {
+      // Server-side errors
+      errorMessage = `${error.message}`;
+    }
+    return throwError(errorMessage);
+  }
+
   getDatatable(additionalParams = null) {
     let params = new HttpParams();
-    // console.log(additionalParams);
+
     if (additionalParams) {
-      if (additionalParams.hasOwnProperty('pageIndex')) {
-        params = params.append('page', additionalParams['pageIndex']);
+      if (additionalParams.hasOwnProperty('page_index')) {
+        params = params.append('page', additionalParams['page_index']);
       }
-      if (additionalParams.hasOwnProperty('pageSize')) {
-        params = params.append('size', additionalParams['pageSize']);
+      if (additionalParams.hasOwnProperty('page_size')) {
+        params = params.append('size', additionalParams['page_size']);
       }
 
       if (additionalParams.hasOwnProperty('order')) {
@@ -48,11 +68,60 @@ export class RestfulService {
       ) {
         params = params.append('filter', additionalParams['filter']);
       }
-    }
-    // console.log(params);
 
-    return this.httpClient.get(`http://localhost:8080/api/filing`, {
-      params,
-    });
+      if (additionalParams.hasOwnProperty('cik') && additionalParams['cik']) {
+        params = params.append('cik', additionalParams['cik']);
+      }
+
+      if (
+        additionalParams.hasOwnProperty('form_type') &&
+        additionalParams['form_type']
+      ) {
+        params = params.append('form_type', additionalParams['form_type']);
+      }
+
+      if (
+        additionalParams.hasOwnProperty('filing_period') &&
+        additionalParams['filing_period']
+      ) {
+        params = params.append(
+          'filing_period',
+          additionalParams['filing_period']
+        );
+      }
+    }
+
+    return this.httpClient
+      .get(`http://localhost:8080/api/filing`, {
+        params,
+      })
+      .pipe(catchError(this.handleError));
+  }
+
+  getFiling(id, additionalParams = null) {
+    let params = new HttpParams();
+    if (additionalParams.hasOwnProperty('page_index')) {
+      params = params.append('page', additionalParams['page_index']);
+    }
+
+    if (additionalParams.hasOwnProperty('page_size')) {
+      params = params.append('size', additionalParams['page_size']);
+    }
+
+    if (additionalParams.hasOwnProperty('file')) {
+      params = params.append('file', additionalParams['file']);
+    }
+
+    return this.httpClient
+      .get(`http://localhost:8080/api/filing_content/${id}`, {
+        params,
+      })
+      .pipe(catchError(this.handleError));
+  }
+
+  getFiles(id, additionalParams = null) {
+    return this.httpClient
+      .get(`http://localhost:8080/api/external/${id}`)
+      .pipe(catchError(this.handleError));
   }
 }

@@ -15,6 +15,7 @@ import {
   UPDATE,
   CHANGE_LEVEL,
 } from '@modules/dashboard/state/overview/actions';
+import { ThemeService } from '@modules/user/services/theme/theme.service';
 
 @Component({
   selector: 'app-overview',
@@ -23,19 +24,27 @@ import {
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class OverviewComponent implements OnInit, AfterViewInit {
-  @ViewChild('graphParent', { static: true }) graphParentElement: ElementRef;
-  @ViewChild('graphCanvas', { static: true }) graphElement: ElementRef;
+  @ViewChild('graphParent', { static: false }) graphParentElement: ElementRef;
+  @ViewChild('graphCanvas', { static: false }) graphElement: ElementRef;
   public graphData: any = [];
   public renderedChart: any;
   public resizeObservable: Observable<Event>;
   public resizeSubscription: Subscription;
   public graphObservable: Observable<any>;
   public chartObservable: Observable<ModuleInterface>;
+  public themeObservable: Observable<ModuleInterface>;
+
   public chartUserState = -1;
   public chartUserOptions = {};
-  constructor(private store: Store<ModuleInterface>) {
+  constructor(
+    private store: Store<ModuleInterface>,
+    public themeService: ThemeService
+  ) {
     this.chartObservable = store.select((states) => {
       return states['dashboard']['overview'];
+    });
+    this.themeObservable = store.select((states) => {
+      return states['user']['theme'];
     });
   }
 
@@ -54,13 +63,22 @@ export class OverviewComponent implements OnInit, AfterViewInit {
       });
     this.chartObservable.subscribe((options) => {
       if (options) {
-        this.drawGraph(true, options);
+        setTimeout(() => {
+          this.drawGraph(true, options);
+        });
+      }
+    });
+    this.themeObservable.subscribe((data) => {
+      if (this.renderedChart) {
+        this.drawGraph(true);
       }
     });
   }
 
-  drawGraph(drawGraphAgain = false, graphData) {
-    this.graphData = Array.from(graphData);
+  drawGraph(drawGraphAgain = false, graphData = null) {
+    if (graphData) {
+      this.graphData = Array.from(graphData);
+    }
     if (this.renderedChart) {
       this.renderedChart.destroy();
     }
@@ -69,24 +87,8 @@ export class OverviewComponent implements OnInit, AfterViewInit {
     ctx.height = this.graphParentElement.nativeElement.offsetHeight;
     ctx.width = this.graphParentElement.nativeElement.offsetWidth;
 
-    const backgroundColors = [
-      // update these based on the theme
-      'rgba(255, 99, 132, 0.2)',
-      'rgba(54, 162, 235, 0.2)',
-    ];
-
-    const borderColors = [
-      // update these based on the theme
-      'rgba(255, 99, 132, 1)',
-      'rgba(54, 162, 235, 1)',
-    ];
-
-    const repeatArray = (arr, times) => {
-      return Array(times)
-        .fill([...arr])
-        .reduce((a, b) => a.concat(b));
-    };
-
+    const themeColors = this.themeService.getThemeColors();
+    console.log(themeColors);
     const labelsOptionsArray = [];
     const dataArray = [];
     const dataInlineArray = [];
@@ -110,10 +112,10 @@ export class OverviewComponent implements OnInit, AfterViewInit {
             minBarLength: 2,
             label: 'Inline Filings',
             data: dataInlineArray,
-            backgroundColor: backgroundColors[0],
-            borderColor: borderColors[0],
-            hoverBackgroundColor: borderColors[0],
-            hoverBorderColor: backgroundColors[0],
+            backgroundColor: themeColors.backgroundColors[0],
+            borderColor: themeColors.borderColors[0],
+            hoverBackgroundColor: themeColors.borderColors[0],
+            hoverBorderColor: themeColors.backgroundColors[0],
             borderWidth: 1,
           },
           {
@@ -122,10 +124,10 @@ export class OverviewComponent implements OnInit, AfterViewInit {
             minBarLength: 2,
             label: 'Filings',
             data: dataArray,
-            backgroundColor: backgroundColors[1],
-            borderColor: borderColors[1],
-            hoverBackgroundColor: borderColors[1],
-            hoverBorderColor: backgroundColors[1],
+            backgroundColor: themeColors.backgroundColors[1],
+            borderColor: themeColors.borderColors[1],
+            hoverBackgroundColor: themeColors.borderColors[1],
+            hoverBorderColor: themeColors.backgroundColors[1],
             borderWidth: 1,
           },
         ],
@@ -134,16 +136,31 @@ export class OverviewComponent implements OnInit, AfterViewInit {
         animation: {
           duration: drawGraphAgain ? 0 : 300,
         },
+        legend: {
+          labels: {
+            fontColor: themeColors.fontColor,
+          },
+        },
         scales: {
           yAxes: [
             {
               scaleLabel: {
                 display: true,
-                labelString: 'Number of Filing(s) per year',
+                fontColor: themeColors.fontColor,
+                labelString: 'Number of Filing(s)',
               },
               ticks: {
+                fontColor: themeColors.fontColor,
                 beginAtZero: true,
+                userCallback: (value, index, values) => {
+                  return Number(value).toLocaleString('en-us');
+                },
               },
+            },
+          ],
+          xAxes: [
+            {
+              ticks: { fontColor: themeColors.fontColor },
             },
           ],
         },
@@ -180,11 +197,11 @@ export class OverviewComponent implements OnInit, AfterViewInit {
               } - ${xLabel}`;
             },
             label: (tooltipItem, data) => {
-              return `${
+              return `${Number(
                 data['datasets'][tooltipItem['datasetIndex']]['data'][
                   tooltipItem['index']
                 ]
-              } records.`;
+              ).toLocaleString('en-us')} records.`;
             },
             afterLabel: (tooltipItem, data) => {
               if (this.chartUserState < 1) {

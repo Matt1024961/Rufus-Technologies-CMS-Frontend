@@ -1,0 +1,35 @@
+table {
+  width: 100%;
+}
+.page-begin {
+  overflow: hidden;
+  text-align: center;
+}
+
+.page-begin:before {
+  right: 0.5em;
+  margin-left: -50%;
+}
+
+.page-begin:after {
+  left: 0.5em;
+  margin-right: -50%;
+}
+
+.page-begin:before,
+.page-begin:after {
+  background-color: #000;
+  content: '';
+  display: inline-block;
+  height: 3px;
+  position: relative;
+  vertical-align: middle;
+  width: 50%;
+}
+
+.mat-button {
+  overflow-x: hidden;
+  white-space: pre-wrap !important;
+  line-height: 20px;
+  display: inline;
+}
