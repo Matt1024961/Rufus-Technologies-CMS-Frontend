@@ -24,6 +24,7 @@ import { ViewComponent } from './components/view/view.component';
 import { InlineComponent } from './components/inline/inline.component';
 import { FileMenuComponent } from './components/file-menu/file-menu.component';
 import { AllFilesListComponent } from './components/all-files-list/all-files-list.component';
+import { SafeHtmlPipe } from './pipes/safe-html.pipe';
 
 @NgModule({
   declarations: [
@@ -37,6 +38,7 @@ import { AllFilesListComponent } from './components/all-files-list/all-files-lis
     InlineComponent,
     FileMenuComponent,
     AllFilesListComponent,
+    SafeHtmlPipe,
   ],
   imports: [
     CommonModule,

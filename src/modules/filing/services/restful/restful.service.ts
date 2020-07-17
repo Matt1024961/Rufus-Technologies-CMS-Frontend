@@ -112,6 +112,13 @@ export class RestfulService {
       params = params.append('file', additionalParams['file']);
     }
 
+    if (
+      additionalParams.hasOwnProperty('filter') &&
+      additionalParams['filter']
+    ) {
+      params = params.append('filter', additionalParams['filter']);
+    }
+
     return this.httpClient
       .get(`http://localhost:8080/api/filing_content/${id}`, {
         params,

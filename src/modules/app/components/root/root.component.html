@@ -19,7 +19,7 @@
     <mat-sidenav-container
       hasBackdrop="false"
       autosize="false"
-      fxFlex="0 0 calc(100vh - 64px)"
+      fxFlex="0 0 calc(100vh - 40px)"
     >
       <mat-sidenav
         [opened]="menuObservableAsync.main_menu"
@@ -73,7 +73,7 @@
         <app-user-menu></app-user-menu>
       </mat-sidenav>
       <mat-sidenav-content fxLayout="column" fxFlexFill>
-        <div fxFlex="0 0 calc(100vh - 64px)">
+        <div fxFlex="0 0 calc(100vh - 40px)">
           <router-outlet fxFlexFill></router-outlet>
         </div>
       </mat-sidenav-content>

@@ -8,7 +8,7 @@
   >
     <mat-card-header fxFlex="auto">
       <mat-card-title>
-        {{ dataObservableAsync.data[0].title }}
+        {{ dataObservableAsync.data[0]?.title || 'No Title Provided' }}
         <app-file-menu></app-file-menu>
       </mat-card-title>
     </mat-card-header>
@@ -365,7 +365,7 @@
 
             <span
               *ngIf="json.type === 'text'"
-              innerHTML="{{ json.content }}"
+              [innerHTML]="json.content | safeHtml"
             ></span>
 
             <img

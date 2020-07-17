@@ -1,4 +1,4 @@
-import { INIT, UPDATE, CLEAR, ERROR, STORE } from './actions';
+import { INIT, UPDATE, CLEAR, ERROR, STORE, STORE_FILTER } from './actions';
 
 import { ReducerInterface } from './interface';
 
@@ -18,6 +18,10 @@ export function reducer(state: ReducerInterface = null, action: any) {
       } else {
         return null;
       }
+    }
+
+    case STORE_FILTER: {
+      return state;
     }
 
     case ERROR: {

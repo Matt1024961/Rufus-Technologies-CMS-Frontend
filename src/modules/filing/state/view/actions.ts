@@ -6,4 +6,6 @@ export const CLEAR = '(AUTO) CLEAR Filing View Options';
 
 export const ERROR = '(AUTO) ERROR Filing View Data';
 
+export const STORE_FILTER = '(AUTO) UPDATE and STORE  Filing View Data';
+
 export const STORE = '(AUTO) STORE Filing View Data';

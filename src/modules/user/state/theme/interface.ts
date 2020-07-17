@@ -1,4 +1,8 @@
 export interface ReducerInterface {
-  theme: string;
+  name: string;
+  href: string;
   font: number;
+  primary: string;
+  accent: string;
+  warn: string;
 }

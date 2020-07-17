@@ -3,6 +3,7 @@ import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
 import { ModuleInterface } from '@modules/filing/state/interface';
 import { first } from 'rxjs/internal/operators/first';
+import { take } from 'rxjs/operators';
 
 @Component({
   selector: 'app-definition',
@@ -21,7 +22,7 @@ export class DefinitionComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.dataObservable.pipe(first()).subscribe((firstValue) => {
+    this.dataObservable.pipe(take(1)).subscribe((firstValue) => {
       this.currentRowData = firstValue['data'].find(
         (current) => current.additional_view
       );

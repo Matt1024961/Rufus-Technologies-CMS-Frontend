@@ -1,4 +1,9 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  ViewChild,
+} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Store } from '@ngrx/store';
@@ -19,6 +24,8 @@ import { debounceTime, distinctUntilChanged, map } from 'rxjs/operators';
   },
 })
 export class ViewComponent implements OnInit {
+  @ViewChild('highlightText', { static: true }) highlightText;
+
   public pageSizeOptions: number[] = [1, 3, 5];
 
   public dataObservable: Observable<ModuleInterface>;
@@ -92,11 +99,10 @@ export class ViewComponent implements OnInit {
         if (formValue.filter !== null) {
           this.userOptions.filter = formValue.filter;
         }
-        console.log(this.userOptions);
-        // this.store.dispatch({
-        //   type: UPDATE,
-        //   result: this.userOptions,
-        // });
+        this.store.dispatch({
+          type: UPDATE,
+          result: { params: this.userOptions, id: this.userOptions.id },
+        });
       });
   }
 

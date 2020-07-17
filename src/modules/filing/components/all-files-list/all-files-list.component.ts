@@ -25,7 +25,6 @@ export class AllFilesListComponent implements OnInit {
       this.currentRowData = firstValue['data'].find(
         (current) => current.additional_view
       );
-      console.log(this.currentRowData);
     });
   }
 

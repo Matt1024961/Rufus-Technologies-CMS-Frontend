@@ -36,7 +36,6 @@ export class ThemeService {
     this.themeObservable.subscribe((data) => {
       themeName = data[`name`];
     });
-    console.log(themeName);
     switch (themeName) {
       case `deeppurple-amber`: {
         return {

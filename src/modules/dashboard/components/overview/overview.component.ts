@@ -88,7 +88,7 @@ export class OverviewComponent implements OnInit, AfterViewInit {
     ctx.width = this.graphParentElement.nativeElement.offsetWidth;
 
     const themeColors = this.themeService.getThemeColors();
-    console.log(themeColors);
+
     const labelsOptionsArray = [];
     const dataArray = [];
     const dataInlineArray = [];
