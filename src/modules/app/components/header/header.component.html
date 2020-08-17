@@ -1,0 +1,19 @@
+<ng-container *ngIf="menuObservable | async; let menuObservableAsync">
+  <header>
+    <mat-toolbar color="primary">
+      <mat-toolbar-row fxLayoutAlign="start center">
+        <a mat-icon-button (click)="toggleMainMenu()">
+          <mat-icon aria-label="Main Menu Button">menu</mat-icon>
+        </a>
+
+        <span>Rufus Technologies</span>
+        <span fxFlex="1 1 auto"></span>
+        <app-breadcrumb></app-breadcrumb>
+        <app-theme></app-theme>
+        <button mat-icon-button (click)="toggleUserMenu()">
+          <mat-icon aria-label="User Menu Button">person</mat-icon>
+        </button>
+      </mat-toolbar-row>
+    </mat-toolbar>
+  </header>
+</ng-container>

@@ -38,6 +38,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 
 import { LoadingComponent } from './components/loading/loading.component';
 import { ErrorComponent } from './components/error/error.component';
+
 @NgModule({
   declarations: [LoadingComponent, ErrorComponent],
   imports: [

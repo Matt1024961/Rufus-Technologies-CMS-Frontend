@@ -9,10 +9,9 @@ import { UPDATE } from '@modules/user/state/theme/actions';
   selector: 'app-theme',
   templateUrl: './theme.component.html',
   styleUrls: ['./theme.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ThemeComponent implements OnInit {
-
   public themeObservable: Observable<ModuleInterface>;
 
   themes = [
@@ -52,40 +51,41 @@ export class ThemeComponent implements OnInit {
   ];
 
   constructor(private store: Store<ModuleInterface>) {
-    this.themeObservable = store.select(states => {
+    console.log('theme component');
+    this.themeObservable = store.select((states) => {
       return states['user']['theme'];
     });
   }
 
-  ngOnInit() {
-
-  }
+  ngOnInit() {}
 
   updateTheme(event: { isTrusted: any }, theme: object) {
-
-
-    if (event.isTrusted && theme && theme.hasOwnProperty('name') && theme.hasOwnProperty('href')) {
+    if (
+      event.isTrusted &&
+      theme &&
+      theme.hasOwnProperty('name') &&
+      theme.hasOwnProperty('href')
+    ) {
       const newTheme = {
         name: theme['name'],
         href: theme['href'],
       };
       this.store.dispatch({
         type: UPDATE,
-        results: newTheme
+        results: newTheme,
       });
     }
   }
 
   updateFont(event, element) {
-
     if (Number.isInteger(event.value)) {
       const newFontSize = {
-        font: event.value
+        font: event.value,
       };
 
       this.store.dispatch({
         type: UPDATE,
-        results: newFontSize
+        results: newFontSize,
       });
     }
   }

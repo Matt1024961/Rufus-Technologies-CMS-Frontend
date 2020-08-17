@@ -5,12 +5,12 @@ import { STORE_MAIN, STORE_USER } from '@modules/app/state/menu/actions';
 import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './root.component.html',
-  styleUrls: ['./root.component.scss'],
+  selector: 'app-header',
+  templateUrl: './header.component.html',
+  styleUrls: ['./header.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class RootComponent implements OnInit {
+export class HeaderComponent implements OnInit {
   public menuObservable: Observable<ModuleInterface>;
 
   constructor(private store: Store<ModuleInterface>) {
@@ -19,7 +19,7 @@ export class RootComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
   toggleMainMenu() {
     this.store.dispatch({

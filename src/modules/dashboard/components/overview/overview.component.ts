@@ -82,6 +82,11 @@ export class OverviewComponent implements OnInit, AfterViewInit {
     if (this.renderedChart) {
       this.renderedChart.destroy();
     }
+
+    if (!this.graphElement) {
+      return;
+    }
+
     const ctx = this.graphElement.nativeElement;
 
     ctx.height = this.graphParentElement.nativeElement.offsetHeight;

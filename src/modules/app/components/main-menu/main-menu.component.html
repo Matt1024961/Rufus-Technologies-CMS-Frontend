@@ -1,34 +1,44 @@
-<mat-nav-list>
-  <a
-    mat-list-item
-    [routerLink]="['/']"
-    (click)="closeMenu()"
-    aria-label="Dashboard Link"
-  >
-    <mat-icon fxFlex="15">home</mat-icon>
-    <span>Dashboard</span>
-  </a>
-  <a
-    mat-list-item
-    [routerLink]="['/faqs']"
-    (click)="closeMenu()"
-    aria-label="FAQs Link"
-  >
-    <mat-icon fxFlex="15">question_answer</mat-icon>
-    <span>FAQs</span>
-  </a>
-  <a
-    mat-list-item
-    [routerLink]="['/filings']"
-    (click)="closeMenu()"
-    aria-label="Filing Link"
-  >
-    <mat-icon fxFlex="15">description</mat-icon>
-    <span>Filings</span>
-  </a>
-</mat-nav-list>
-<mat-list>
-  <mat-list-item aria-label="Version Reference">
-    <span>App Version: {{ version }}</span>
-  </mat-list-item>
-</mat-list>
+<section>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row fxLayoutAlign="start center" fxFlex="100%">
+      <button mat-icon-button (click)="closeMenu()">
+        <mat-icon aria-label="Main Menu Button">close</mat-icon>
+      </button>
+      <span>Main Menu</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <mat-nav-list>
+    <a
+      mat-list-item
+      [routerLink]="['/']"
+      (click)="closeMenu()"
+      aria-label="Dashboard Link"
+    >
+      <mat-icon fxFlex="15">home</mat-icon>
+      <span>Dashboard</span>
+    </a>
+    <a
+      mat-list-item
+      [routerLink]="['/faqs']"
+      (click)="closeMenu()"
+      aria-label="FAQs Link"
+    >
+      <mat-icon fxFlex="15">question_answer</mat-icon>
+      <span>FAQs</span>
+    </a>
+    <a
+      mat-list-item
+      [routerLink]="['/filings']"
+      (click)="closeMenu()"
+      aria-label="Filing Link"
+    >
+      <mat-icon fxFlex="15">description</mat-icon>
+      <span>Filings</span>
+    </a>
+  </mat-nav-list>
+  <mat-list>
+    <mat-list-item aria-label="Version Reference">
+      <span>App Version: {{ version }}</span>
+    </mat-list-item>
+  </mat-list>
+</section>

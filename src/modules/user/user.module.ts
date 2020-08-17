@@ -2,7 +2,6 @@ import { NgModule, APP_INITIALIZER } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
-
 import { UserRoutingModule } from '@modules/user/user-routing.module';
 import { UiModule } from '@modules/ui/ui.module';
 
@@ -35,7 +34,7 @@ import { ForgotComponent } from './components/forgot/forgot.component';
     AuthenticatedUserMenuComponent,
     AuthenticatedUserWelcomeComponent,
     AuthenticatedUserFavoritesComponent,
-    ForgotComponent
+    ForgotComponent,
   ],
   imports: [
     CommonModule,
@@ -46,7 +45,7 @@ import { ForgotComponent } from './components/forgot/forgot.component';
     StoreModule.forFeature('user', ModuleReducers),
     EffectsModule.forFeature(ModuleEffects),
 
-    UiModule
+    UiModule,
   ],
   exports: [UserMenuComponent, ThemeComponent],
   providers: [
@@ -55,19 +54,15 @@ import { ForgotComponent } from './components/forgot/forgot.component';
     {
       provide: APP_INITIALIZER,
       useFactory: ThemeFactory,
-      deps: [
-        ThemeService
-      ],
-      multi: true
+      deps: [ThemeService],
+      multi: true,
     },
     {
       provide: APP_INITIALIZER,
       useFactory: AuthenticationFactory,
-      deps: [
-        AuthenticationService
-      ],
-      multi: true
+      deps: [AuthenticationService],
+      multi: true,
     },
   ],
 })
-export class UserModule { }
+export class UserModule {}

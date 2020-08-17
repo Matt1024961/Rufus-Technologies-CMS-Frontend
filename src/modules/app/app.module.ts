@@ -21,6 +21,8 @@ import { ResponsiveService } from '@modules/app/services/responsive/responsive.s
 import { ResponsiveFactory } from '@modules/app/factories/responsive.factory';
 
 import { RootComponent } from '@modules/app/components/root/root.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 import { BreadcrumbComponent } from '@modules/app/components/breadcrumb/breadcrumb.component';
 import { MainMenuComponent } from '@modules/app/components/main-menu/main-menu.component';
 
@@ -34,7 +36,13 @@ const appearance: MatFormFieldDefaultOptions = {
 };
 
 @NgModule({
-  declarations: [RootComponent, BreadcrumbComponent, MainMenuComponent],
+  declarations: [
+    RootComponent,
+    BreadcrumbComponent,
+    MainMenuComponent,
+    HeaderComponent,
+    FooterComponent,
+  ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
@@ -74,8 +82,8 @@ const appearance: MatFormFieldDefaultOptions = {
 
     EffectsModule.forRoot([]),
 
-    UiModule,
     UserModule,
+    UiModule,
   ],
   providers: [
     ResponsiveService,

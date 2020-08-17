@@ -1,21 +1,7 @@
 <ng-container *ngIf="menuObservable | async; let menuObservableAsync">
-  <mat-toolbar color="primary">
-    <mat-toolbar-row fxLayoutAlign="start center">
-      <a mat-icon-button (click)="toggleMainMenu()">
-        <mat-icon aria-label="Main Menu Button">menu</mat-icon>
-      </a>
+  <app-header></app-header>
 
-      <span>Boiler Plate</span>
-      <span fxFlex="1 1 auto"></span>
-      <app-breadcrumb></app-breadcrumb>
-      <app-theme></app-theme>
-      <button mat-icon-button (click)="toggleUserMenu()">
-        <mat-icon aria-label="User Menu Button">person</mat-icon>
-      </button>
-    </mat-toolbar-row>
-  </mat-toolbar>
-
-  <div fxLayout="column">
+  <section fxLayout="column">
     <mat-sidenav-container
       hasBackdrop="false"
       autosize="false"
@@ -36,14 +22,6 @@
         fxFlex.xl="25%"
         fxFlexFill
       >
-        <mat-toolbar color="primary">
-          <mat-toolbar-row fxLayoutAlign="start center" fxFlex="100%">
-            <button mat-icon-button (click)="toggleMainMenu()">
-              <mat-icon aria-label="Main Menu Button">close</mat-icon>
-            </button>
-            <span>Main Menu</span>
-          </mat-toolbar-row>
-        </mat-toolbar>
         <app-main-menu></app-main-menu>
       </mat-sidenav>
 
@@ -62,14 +40,6 @@
         fxFlex.xl="25%"
         fxFlexFill
       >
-        <mat-toolbar color="primary">
-          <mat-toolbar-row fxLayoutAlign="start center" fxFlex="100%">
-            <button mat-icon-button (click)="toggleUserMenu()">
-              <mat-icon aria-label="User Menu Button">close</mat-icon>
-            </button>
-            <span>User Menu</span>
-          </mat-toolbar-row>
-        </mat-toolbar>
         <app-user-menu></app-user-menu>
       </mat-sidenav>
       <mat-sidenav-content fxLayout="column" fxFlexFill>
@@ -78,5 +48,6 @@
         </div>
       </mat-sidenav-content>
     </mat-sidenav-container>
-  </div>
+  </section>
+  <app-footer></app-footer>
 </ng-container>

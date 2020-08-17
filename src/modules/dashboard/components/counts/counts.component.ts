@@ -79,6 +79,9 @@ export class CountsComponent implements OnInit, AfterViewInit {
       this.renderedChart.destroy();
     }
 
+    if (!this.graphElement) {
+      return;
+    }
     const ctx = this.graphElement.nativeElement;
 
     ctx.height = this.graphParentElement.nativeElement.offsetHeight;

@@ -1,1 +1,11 @@
-<app-authenticated-user-welcome></app-authenticated-user-welcome>
+<section>
+  <mat-toolbar color="primary">
+    <mat-toolbar-row fxLayoutAlign="start center" fxFlex="100%">
+      <button mat-icon-button (click)="closeMenu()">
+        <mat-icon aria-label="User Menu Button">close</mat-icon>
+      </button>
+      <span>User Menu</span>
+    </mat-toolbar-row>
+  </mat-toolbar>
+  <app-authenticated-user-welcome></app-authenticated-user-welcome>
+</section>

@@ -1,6 +1,10 @@
-<ng-container *ngIf="themeObservable | async; let themeObservableAsync;">
-  <button mat-icon-button [mat-menu-trigger-for]="themeMenu" aria-label="Select a theme"
-    matTooltip="Select a theme for the documentation">
+<ng-container *ngIf="themeObservable | async; let themeObservableAsync">
+  <button
+    mat-icon-button
+    [mat-menu-trigger-for]="themeMenu"
+    aria-label="Select a theme"
+    matTooltip="Select a theme for the documentation"
+  >
     <mat-icon>format_color_fill</mat-icon>
   </button>
 
@@ -8,12 +12,24 @@
     <!-- <div fxLayoutAlign="center center" class="mat-h4">
       <span>Theme</span>
     </div> -->
-    <button mat-menu-item *ngFor="let theme of themes" (click)="updateTheme($event, theme); $event.stopPropagation();">
-      <mat-icon [ngClass]="{'theme-selected-icon': currentTheme === theme}"
-        [color]="themeObservableAsync['name'] === theme.name ? 'accent' : undefined">
-        {{themeObservableAsync['name'] === theme.name ? 'radio_button_checked' : 'radio_button_unchecked'}}
+    <button
+      mat-menu-item
+      *ngFor="let theme of themes"
+      (click)="updateTheme($event, theme); $event.stopPropagation()"
+    >
+      <mat-icon
+        [ngClass]="{ 'theme-selected-icon': currentTheme === theme }"
+        [color]="
+          themeObservableAsync['name'] === theme.name ? 'accent' : undefined
+        "
+      >
+        {{
+          themeObservableAsync['name'] === theme.name
+            ? 'radio_button_checked'
+            : 'radio_button_unchecked'
+        }}
       </mat-icon>
-      <span>{{theme.displayName}}</span>
+      <span>{{ theme.displayName }}</span>
       <mat-icon [class]="'theme-example-icon ' + theme.name"></mat-icon>
     </button>
 
@@ -21,9 +37,20 @@
       <h2 class="example-h2">Font Size</h2>
     </div> -->
 
-    <div mat-menu-item fxLayoutAlign="center center" fxFlex="100" (click)="$event.stopPropagation();">
-      <mat-slider fxFlex="90" [min]="0" [max]="2" [tickInterval]="auto" [value]="themeObservableAsync['font']"
-        (change)="updateFont($event);"></mat-slider>
+    <div
+      mat-menu-item
+      fxLayoutAlign="center center"
+      fxFlex="100"
+      (click)="$event.stopPropagation()"
+    >
+      <mat-slider
+        fxFlex="90"
+        [min]="0"
+        [max]="2"
+        [tickInterval]="auto"
+        [value]="themeObservableAsync['font']"
+        (change)="updateFont($event)"
+      ></mat-slider>
     </div>
   </mat-menu>
 </ng-container>
