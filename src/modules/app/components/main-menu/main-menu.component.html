@@ -13,6 +13,8 @@
       [routerLink]="['/']"
       (click)="closeMenu()"
       aria-label="Dashboard Link"
+      routerLinkActive="mat-primary-bg"
+      [routerLinkActiveOptions]="{ exact: true }"
     >
       <mat-icon fxFlex="15">home</mat-icon>
       <span>Dashboard</span>
@@ -22,6 +24,7 @@
       [routerLink]="['/faqs']"
       (click)="closeMenu()"
       aria-label="FAQs Link"
+      routerLinkActive="mat-primary-bg"
     >
       <mat-icon fxFlex="15">question_answer</mat-icon>
       <span>FAQs</span>
@@ -31,9 +34,85 @@
       [routerLink]="['/filings']"
       (click)="closeMenu()"
       aria-label="Filing Link"
+      routerLinkActive="mat-primary-bg"
     >
-      <mat-icon fxFlex="15">description</mat-icon>
-      <span>Filings</span>
+      <mat-icon fxFlex="15">bar_chart</mat-icon>
+      <span>Analytics</span>
+    </a>
+    <a
+      mat-list-item
+      [routerLink]="['/filings']"
+      (click)="closeMenu()"
+      aria-label="Filing Link"
+      routerLinkActive="mat-primary-bg"
+    >
+      <mat-icon fxFlex="15">mic</mat-icon>
+      <span>Blogs</span>
+    </a>
+
+    <a
+      mat-list-item
+      [routerLink]="['/filings']"
+      (click)="closeMenu()"
+      aria-label="Filing Link"
+      routerLinkActive="mat-primary-bg"
+    >
+      <mat-icon fxFlex="15">perm_media</mat-icon>
+      <span>Media</span>
+    </a>
+
+    <a
+      mat-list-item
+      [routerLink]="['/filings']"
+      (click)="closeMenu()"
+      aria-label="Filing Link"
+      routerLinkActive="mat-primary-bg"
+    >
+      <mat-icon fxFlex="15">menu</mat-icon>
+      <span>Menus</span>
+    </a>
+
+    <a
+      mat-list-item
+      [routerLink]="['/filings']"
+      (click)="closeMenu()"
+      aria-label="Filing Link"
+      routerLinkActive="mat-primary-bg"
+    >
+      <mat-icon fxFlex="15">library_books</mat-icon>
+      <span>Pages</span>
+    </a>
+
+    <a
+      mat-list-item
+      [routerLink]="['/filings']"
+      (click)="closeMenu()"
+      aria-label="Filing Link"
+      routerLinkActive="mat-primary-bg"
+    >
+      <mat-icon fxFlex="15">group</mat-icon>
+      <span>Users</span>
+    </a>
+
+    <a
+      mat-list-item
+      [routerLink]="['/filings']"
+      (click)="closeMenu()"
+      aria-label="Filing Link"
+      routerLinkActive="mat-primary-bg"
+    >
+      <mat-icon fxFlex="15">engineering</mat-icon>
+      <span>Configuration</span>
+    </a>
+    <a
+      mat-list-item
+      [routerLink]="['/filings']"
+      (click)="closeMenu()"
+      aria-label="Filing Link"
+      routerLinkActive="mat-primary-bg"
+    >
+      <mat-icon fxFlex="15">contact_support</mat-icon>
+      <span>Contact Support</span>
     </a>
   </mat-nav-list>
   <mat-list>

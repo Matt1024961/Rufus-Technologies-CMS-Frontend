@@ -1,7 +1,7 @@
 <ng-container *ngIf="menuObservable | async; let menuObservableAsync">
   <header>
     <mat-toolbar color="primary">
-      <mat-toolbar-row fxLayoutAlign="start center">
+      <mat-toolbar-row fxLayoutAlign="start center" class="toolbar-height">
         <a mat-icon-button (click)="toggleMainMenu()">
           <mat-icon aria-label="Main Menu Button">menu</mat-icon>
         </a>

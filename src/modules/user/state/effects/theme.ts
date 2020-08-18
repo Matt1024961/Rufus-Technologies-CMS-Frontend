@@ -134,11 +134,11 @@ export class Effects {
                   const specificStyles = {
                     '.mat-primary-bg': {
                       'background-color': '#3f51b5',
-                      color: '#ff4081',
+                      color: '#fff !important',
                     },
                     '.mat-accent-bg': {
                       'background-color': '#ff4081',
-                      color: '#3f51b5',
+                      color: 'rgba(0,0,0,.87) !important',
                     },
                     '.mat-warn-bg': { 'background-color': '#f44336' },
                   };

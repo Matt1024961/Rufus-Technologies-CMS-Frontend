@@ -51,7 +51,6 @@ export class ThemeComponent implements OnInit {
   ];
 
   constructor(private store: Store<ModuleInterface>) {
-    console.log('theme component');
     this.themeObservable = store.select((states) => {
       return states['user']['theme'];
     });

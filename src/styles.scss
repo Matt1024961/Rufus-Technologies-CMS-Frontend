@@ -1,7 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
 
 $material-icons-font-path: '~material-icons/iconfont/';
-@import '~material-icons/iconfont/material-icons.scss';
+@import '~material-design-icons/iconfont/material-icons.css';
 
 html,
 body {
@@ -14,15 +14,19 @@ body {
   //overflow: hidden;
 }
 
+.toolbar-height {
+  height: 64px;
+}
+
 .mat-grid-tile .mat-figure {
   padding: 5px !important;
 }
 
 .fx-host {
   box-sizing: border-box;
-  max-height: calc(100vh - 40px);
-  min-height: calc(100vh - 40px);
-  height: calc(100vh - 40px);
+  max-height: calc(100vh - 128px);
+  min-height: calc(100vh - 128px);
+  height: calc(100vh - 128px);
   display: flex;
 }
 

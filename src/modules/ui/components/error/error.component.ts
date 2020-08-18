@@ -18,7 +18,5 @@ export class ErrorComponent implements OnInit {
   @Input() error: any;
   constructor() {}
 
-  ngOnInit(): void {
-    console.log(this.error);
-  }
+  ngOnInit(): void {}
 }
